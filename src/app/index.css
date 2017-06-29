@@ -1,3 +1,21 @@
+nav ul {
+  background: #000000;
+  margin: 0px;
+  padding: 0px;
+  list-style: none; }
+nav li {
+  display: inline-block; }
+nav .glyphicon {
+  color: #ffffff;
+  display: inline-block;
+  padding: 15px;
+  text-decoration: none;
+  margin-left: 800px; }
+nav .glyphicon:hover {
+  color: #ffffff; }
 
+.p1 {
+  width: 50%;
+  text-align: center; }
 
 /*# sourceMappingURL=index.css.map */
