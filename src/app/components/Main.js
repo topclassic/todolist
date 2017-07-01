@@ -2,19 +2,39 @@ import React from "react";
 
 export class Main extends React.Component{
 
-    
+    constructor(props){
+        super()
+        this.state = {
+            tasks: false
+        }
+    }
 
-    render(){
+    addTask = () =>{
+        this.setState({
+            tasks: true
+        })
+    }
+    enterTask = () =>{
+        this.setState({
+            tasks: false
+        })
+    }
+    renderAddTask(){
         return(
             <div>
                 <p> list task </p>
-
-                <a href="#" className="addTask" ><span className="glyphicon glyphicon-plus"></span> &nbsp; Add Task </a>
-
-                <div className="center">
+                <a href="#" onClick={this.addTask} className="addTask" ><span className="glyphicon glyphicon-plus"></span>
+                    &nbsp; Add Task </a>
+            </div>
+        )
+    }
+    renderEnterTask(){
+        return(
+            <div className="center">
+                <p> list task </p>
                 <form>
                     <table>
-                    <tbody>
+                        <tbody>
                         <tr>
                             <td>
                                 <input type="text" placeholder="enter task.." size="40"/>
@@ -24,17 +44,15 @@ export class Main extends React.Component{
                             </td>
                         </tr>
 
-                    </tbody>
+                        </tbody>
                     </table>
-
                     <table>
                         <tbody>
                         <tr>
                             <td>
-                                <button type="button" className="btn btn-default">
-                                    Add Task
+                                <button onClick={this.enterTask} type="button" className="btn btn-default">Add Task
                                 </button>
-                                <button type="button" className="btn btn-link">
+                                <button type="button" onClick={this.enterTask} className="btn btn-link">
                                     Cancel
                                 </button>
                             </td>
@@ -42,8 +60,14 @@ export class Main extends React.Component{
                         </tbody>
                     </table>
                 </form>
-                </div>
             </div>
         )
+    }
+    render(){
+        if(this.state.tasks){
+            return this.renderEnterTask()
+        }else{
+            return this.renderAddTask()
+        }
     }
 }
