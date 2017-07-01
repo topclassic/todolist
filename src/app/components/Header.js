@@ -6,7 +6,7 @@ export class Header extends React.Component{
         return(
             <nav>
                 <ul>
-                    <li><a href="" ><span className="glyphicon glyphicon-plus"></span></a></li>
+                    <p>TODO LIST APPLICATION</p>
 
                 </ul>
 

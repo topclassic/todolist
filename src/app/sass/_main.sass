@@ -1,0 +1,58 @@
+$placeholder: #d9d9d9
+$font: "Gurmukhi MN",sans-serif
+
+div
+
+  text-align: center
+
+
+  p
+
+    font-family: $font
+    font-size: 30px
+    color: black
+    font-variant: small-caps
+
+  input[type=text]
+    padding: 8px 20px
+    margin: 7px 0
+    display: inline-block
+    border: 1px solid #ccc
+    border-radius: 4px
+
+  input[type=text]::placeholder
+    color: $placeholder
+    font-size: small
+    font-family: $font
+
+
+  input[type=text]:focus
+    border: 1px solid #555
+    outline: 0
+
+
+
+
+.center
+
+  width: 28%
+  margin: auto
+  float: none
+
+
+
+.addTask
+  color: gray
+.addTask:hover, .addTask:active, .addTask:visited, .addTask:link
+  @extend .addTask
+  text-decoration: none
+
+.btn-default
+  background-color: gray
+  color: white
+  border-radius: 3px
+  border: 0px
+
+
+
+.textBox

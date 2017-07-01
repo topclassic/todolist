@@ -1,18 +1,50 @@
-nav ul {
-  background: #000000;
-  margin: 0px;
-  padding: 0px;
-  list-style: none; }
-nav li {
-  display: inline-block; }
-nav .glyphicon {
-  color: #ffffff;
-  display: inline-block;
-  padding: 15px;
-  text-decoration: none;
-  margin-left: 800px; }
-nav .glyphicon:hover {
-  color: #ffffff; }
+div {
+  text-align: center; }
+  div p {
+    font-family: "Gurmukhi MN", sans-serif;
+    font-size: 30px;
+    color: black;
+    font-variant: small-caps; }
+  div input[type=text] {
+    padding: 8px 20px;
+    margin: 7px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px; }
+  div input[type=text]::placeholder {
+    color: #d9d9d9;
+    font-size: small;
+    font-family: "Gurmukhi MN", sans-serif; }
+  div input[type=text]:focus {
+    border: 1px solid #555;
+    outline: 0; }
+
+.center {
+  width: 28%;
+  margin: auto;
+  float: none; }
+
+.addTask, .addTask:hover, .addTask:active, .addTask:visited, .addTask:link {
+  color: gray; }
+
+.addTask:hover, .addTask:active, .addTask:visited, .addTask:link {
+  text-decoration: none; }
+
+.btn-default {
+  background-color: gray;
+  color: white;
+  border-radius: 3px;
+  border: 0px; }
+
+nav {
+  text-align: center; }
+  nav ul {
+    background: #000000;
+    margin: 0px;
+    padding: 0px;
+    list-style: none; }
+  nav p {
+    color: white; }
 
 .p1 {
   width: 50%;
