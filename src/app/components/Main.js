@@ -3,20 +3,25 @@ import React from "react";
 export class Main extends React.Component{
 
     constructor(props){
-        super()
+        super(props)
         this.state = {
-            tasks: false
+            add: false,
+            newTasks: ""
         }
     }
 
     addTask = () =>{
         this.setState({
-            tasks: true
+            add: true
+
         })
     }
     enterTask = () =>{
+        this.props.setTasks(this.state.newTasks)
         this.setState({
-            tasks: false
+            add: false,
+            newTasks:""
+
         })
     }
     renderAddTask(){
@@ -37,7 +42,8 @@ export class Main extends React.Component{
                         <tbody>
                         <tr>
                             <td>
-                                <input type="text" placeholder="enter task.." size="40"/>
+                                <input type="text" placeholder="enter task.." size="40"
+                                       value={this.state.newTasks} onChange={(t)=>this.setState({newTasks: t.target.value})}/>
                             </td>
                             <td>
                                 <input type="text" placeholder="schedule" size="10"/>
@@ -64,7 +70,7 @@ export class Main extends React.Component{
         )
     }
     render(){
-        if(this.state.tasks){
+        if(this.state.add){
             return this.renderEnterTask()
         }else{
             return this.renderAddTask()
