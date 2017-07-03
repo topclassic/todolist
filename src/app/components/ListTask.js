@@ -2,25 +2,19 @@ import React from "react";
 
 export class ListTask extends React.Component{
 
-    constructor(props){
-        super(props)
-        this.state={
-            done: false
-        }
-    }
     render() {
+
+        let tasks = this.props.tasks.map((tasks, key) => {
+            return <li key={key} onClick={this.handleRemove.bind(this)}>{tasks}</li>
+        })
         return (
-            <div>
-                <ul>
-
-                    {
-                        this.props.tasks.map((todo,key) => <li key={key}>{todo}</li>)
-                    }
-
-                </ul>
-            </div>
+            <ul>
+                {tasks}
+            </ul>
         )
     }
-
+    handleRemove(task) {
+        this.props.removeTasks(task.currentTarget.innerText)
+    }
 
 }

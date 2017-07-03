@@ -1,29 +1,36 @@
 import React from "react";
 
-export class Main extends React.Component{
+export class FormTask extends React.Component{
 
     constructor(props){
         super(props)
         this.state = {
             add: false,
-            newTasks: ""
+
         }
     }
-
     addTask = () =>{
         this.setState({
             add: true
 
         })
     }
-    enterTask = () =>{
-        this.props.setTasks(this.state.newTasks)
+    enterTask = (e) =>{
         this.setState({
             add: false,
-            newTasks:""
 
         })
+        e.preventDefault()
+        let val = this.refs.listTasks.value
+        val && this.props.addTasks(val)
+        this.refs.listTasks.value = ""
     }
+    cancelTask = () =>{
+        this.setState({
+            add: false,
+        })
+    }
+
     renderAddTask(){
         return(
             <div>
@@ -41,7 +48,7 @@ export class Main extends React.Component{
                         <tr>
                             <td>
                                 <input type="text" placeholder="enter task.." size="40"
-                                       value={this.state.newTasks} onChange={(t)=>this.setState({newTasks: t.target.value})}/>
+                                       ref="listTasks"/>
                             </td>
                             <td>
                                 <input type="text" placeholder="schedule" size="10"/>
@@ -54,9 +61,9 @@ export class Main extends React.Component{
                         <tbody>
                         <tr>
                             <td>
-                                <button onClick={this.enterTask} type="button" className="btn btn-default">Add Task
+                                <button onClick={this.enterTask} value="Add" type="button" className="btn btn-default">Add Task
                                 </button>
-                                <button type="button" onClick={this.enterTask} className="btn btn-link">
+                                <button type="button" onClick={this.cancelTask} className="btn btn-link">
                                     Cancel
                                 </button>
                             </td>

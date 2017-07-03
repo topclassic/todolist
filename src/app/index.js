@@ -3,6 +3,7 @@ import ReactDOM from "react-dom"
 import { Header } from "./components/header"
 import { Main } from "./components/Main"
 import { ListTask } from "./components/ListTask"
+import { MainTask } from "./components/MainTask"
 
 class App extends React.Component {
 
@@ -13,6 +14,8 @@ class App extends React.Component {
         }
         this.addTasks = this.addTasks.bind(this)
     }
+
+
 
     addTasks(newTasks){
         this.setState({
@@ -28,8 +31,12 @@ class App extends React.Component {
                 </div>
                 <br/>
                 <div>
-                    <ListTask tasks={this.state.tasks}/>
-                    <Main setTasks={this.addTasks}/>
+                    <p> list task </p>
+
+                </div>
+                <br/>
+                <div>
+                    <MainTask/>
                 </div>
             </div>
         )
