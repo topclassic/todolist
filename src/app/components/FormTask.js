@@ -15,16 +15,26 @@ export class FormTask extends React.Component{
 
         })
     }
-    enterTask = (e) =>{
-        this.setState({
-            add: false,
-
-        })
+    inputText = (e) =>{
         e.preventDefault()
-        let val = this.refs.listTasks.value
-        val && this.props.addTasks(val)
-        this.refs.listTasks.value = ""
+        this.setState({
+            title: this.refs.title.value,
+            date: this.refs.date.value
+        })
+
     }
+    enterTask = () =>{
+        this.setState({
+            add: false
+        })
+
+        let title = this.state.title
+        let date = this.state.date
+        title && date && this.props.addTasks({title,date})
+        this.state.title = ""
+        this.state.date = ""
+    }
+
     cancelTask = () =>{
         this.setState({
             add: false,
@@ -48,10 +58,11 @@ export class FormTask extends React.Component{
                         <tr>
                             <td>
                                 <input type="text" placeholder="enter task.." size="40"
-                                       ref="listTasks"/>
+                                       ref="title" onChange={this.inputText}/>
                             </td>
                             <td>
-                                <input type="text" placeholder="schedule" size="10"/>
+                                <input type="text" placeholder="schedule" size="10"
+                                       ref="date" onChange={this.inputText}/>
                             </td>
                         </tr>
 
