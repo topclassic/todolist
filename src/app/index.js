@@ -1,8 +1,6 @@
 import React from "react"
 import ReactDOM from "react-dom"
 import { Header } from "./components/header"
-import { Main } from "./components/Main"
-import { ListTask } from "./components/ListTask"
 import { MainTask } from "./components/MainTask"
 
 class App extends React.Component {

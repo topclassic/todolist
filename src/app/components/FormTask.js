@@ -15,24 +15,17 @@ export class FormTask extends React.Component{
 
         })
     }
-    inputText = (e) =>{
+    enterTask = (e) =>{
         e.preventDefault()
-        this.setState({
-            title: this.refs.title.value,
-            date: this.refs.date.value
-        })
-
-    }
-    enterTask = () =>{
         this.setState({
             add: false
         })
 
-        let title = this.state.title
-        let date = this.state.date
+        let title = this.refs.title.value
+        let date = this.refs.date.value
         title && date && this.props.addTasks({title,date})
-        this.state.title = ""
-        this.state.date = ""
+        this.refs.title.value = ""
+        this.refs.date.value = ""
     }
 
     cancelTask = () =>{
@@ -58,11 +51,11 @@ export class FormTask extends React.Component{
                         <tr>
                             <td>
                                 <input type="text" placeholder="enter task.." size="40"
-                                       ref="title" onChange={this.inputText}/>
+                                       ref="title" />
                             </td>
                             <td>
                                 <input type="text" placeholder="schedule" size="10"
-                                       ref="date" onChange={this.inputText}/>
+                                       ref="date" />
                             </td>
                         </tr>
 

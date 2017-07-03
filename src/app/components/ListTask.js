@@ -4,13 +4,11 @@ export class ListTask extends React.Component{
 
     render() {
 
-        let tasks = this.props.tasks.map((tasks, key) => {
-            return <li key={key} onClick={this.handleRemove.bind(this)}>{tasks.title}{tasks.date}</li>
-        })
         return (
-            <ul>
-                {tasks}
-            </ul>
+            <div>
+                {this.props.tasks.map((tasks,key) => <li key={key} onClick={this.handleRemove.bind(this)}> {key}{tasks.title} {tasks.date}</li>)}
+            </div>
+
         )
     }
     handleRemove(task) {
