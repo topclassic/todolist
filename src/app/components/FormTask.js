@@ -1,15 +1,24 @@
-import React from "react";
+import React from "react"
+import DatePicker from 'react-datepicker'
+import moment from 'moment'
 
+import 'react-datepicker/dist/react-datepicker.css'
 
 export class FormTask extends React.Component{
 
     constructor(props){
         super(props)
         this.state = {
+            date: moment(),
             add: false,
             addDesc: false,
             description:""
         }
+    }
+    handleChange = (date) => {
+        this.setState({
+            date: date
+        });
     }
     addTask = () =>{
         this.setState({
@@ -37,10 +46,10 @@ export class FormTask extends React.Component{
 
         let title = this.refs.title.value
         let description = this.state.description
-        let date = this.refs.date.value
+        let date = this.state.date.calendar()
         title && date && this.props.addTasks({title,description,date})
         this.refs.title.value = ""
-        this.refs.date.value = ""
+        this.state.date = moment()
         this.state.description = ""
     }
 
@@ -82,8 +91,7 @@ export class FormTask extends React.Component{
                                        ref="title" />
                             </td>
                             <td>
-                                <input type="text" placeholder="schedule" size="10"
-                                       ref="date" />
+                                <DatePicker selected={this.state.date} onChange={this.handleChange}/>
                             </td>
                         </tr>
                         </tbody>
