@@ -5,17 +5,17 @@ div {
     font-size: 30px;
     color: black;
     font-variant: small-caps; }
-  div input[type=text] {
+  div input[type=text], div textarea {
     padding: 8px 20px;
     margin: 3px 0;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px; }
-  div input[type=text]::placeholder {
+  div input[type=text]::placeholder, div textarea::placeholder {
     color: #d9d9d9;
     font-size: small;
     font-family: "Gurmukhi MN", sans-serif; }
-  div input[type=text]:focus {
+  div input[type=text]:focus, div textarea:focus {
     border: 1px solid #555;
     outline: 0; }
 

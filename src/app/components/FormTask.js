@@ -27,15 +27,9 @@ export class FormTask extends React.Component{
         })
     }
     addDesc = () =>{
-        if(this.state.addDesc){
-            this.setState({
-                addDesc:  false
-            })
-        }else{
-            this.setState({
-                addDesc:  true
-            })
-        }
+        this.setState({
+            addDesc: !this.state.addDesc
+        })
     }
     enterTask = (e) =>{
         e.preventDefault()
@@ -76,7 +70,7 @@ export class FormTask extends React.Component{
     renderEnterTask(){
         let content = ""
         if(this.state.addDesc){
-            content = <div><input onChange={this.inputText} type="text" placeholder="description" size="10"/></div>
+            content = <div><textarea onChange={this.inputText} rows="4" cols="50" placeholder="description.."></textarea></div>
         }else{
             content = ""
         }

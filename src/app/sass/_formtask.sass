@@ -30,7 +30,14 @@ div
     border: 1px solid #555
     outline: 0
 
+  textarea
+    @extend input[type=text]
 
+  textarea::placeholder
+    @extend input[type=text]::placeholder
+
+  textarea:focus
+    @extend input[type=text]:focus
 
 .center
 

@@ -17,7 +17,6 @@ export class MainTask extends React.Component{
         })
     }
     removeTasks(value) {
-        console.log(value)
         let filtered = this.state.tasks
         filtered.splice(value, 1);
         console.log(filtered)
