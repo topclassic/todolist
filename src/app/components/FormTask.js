@@ -1,12 +1,14 @@
 import React from "react";
 
+
 export class FormTask extends React.Component{
 
     constructor(props){
         super(props)
         this.state = {
             add: false,
-
+            addDesc: false,
+            description:""
         }
     }
     addTask = () =>{
@@ -15,25 +17,45 @@ export class FormTask extends React.Component{
 
         })
     }
+    addDesc = () =>{
+        if(this.state.addDesc){
+            this.setState({
+                addDesc:  false
+            })
+        }else{
+            this.setState({
+                addDesc:  true
+            })
+        }
+    }
     enterTask = (e) =>{
         e.preventDefault()
         this.setState({
-            add: false
+            add: false,
+            addDesc: false
         })
 
         let title = this.refs.title.value
+        let description = this.state.description
         let date = this.refs.date.value
-        title && date && this.props.addTasks({title,date})
+        title && date && this.props.addTasks({title,description,date})
         this.refs.title.value = ""
         this.refs.date.value = ""
+        this.state.description = ""
     }
 
     cancelTask = () =>{
         this.setState({
             add: false,
+            addDesc: false
         })
     }
-
+    inputText = (e) =>{
+        e.preventDefault()
+        this.setState({
+            description: e.target.value
+        })
+    }
     renderAddTask(){
         return(
             <div>
@@ -43,6 +65,12 @@ export class FormTask extends React.Component{
         )
     }
     renderEnterTask(){
+        let content = ""
+        if(this.state.addDesc){
+            content = <div><input onChange={this.inputText} type="text" placeholder="description" size="10"/></div>
+        }else{
+            content = ""
+        }
         return(
             <div className="center">
                 <form>
@@ -50,7 +78,7 @@ export class FormTask extends React.Component{
                         <tbody>
                         <tr>
                             <td>
-                                <input type="text" placeholder="enter task.." size="40"
+                                <input type="text" placeholder="title task.." size="40"
                                        ref="title" />
                             </td>
                             <td>
@@ -58,7 +86,15 @@ export class FormTask extends React.Component{
                                        ref="date" />
                             </td>
                         </tr>
-
+                        </tbody>
+                    </table>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td>
+                                {content}
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                     <table>
@@ -70,6 +106,10 @@ export class FormTask extends React.Component{
                                 <button type="button" onClick={this.cancelTask} className="btn btn-link">
                                     Cancel
                                 </button>
+                            </td>
+                            <td>
+                                <a onClick={this.addDesc} width="50" href="#" className="addDesc" >
+                                    <span className="glyphicon glyphicon-comment"></span></a>
                             </td>
                         </tr>
                         </tbody>

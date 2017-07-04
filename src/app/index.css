@@ -7,7 +7,7 @@ div {
     font-variant: small-caps; }
   div input[type=text] {
     padding: 8px 20px;
-    margin: 7px 0;
+    margin: 3px 0;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px; }
@@ -24,6 +24,13 @@ div {
   margin: auto;
   float: none; }
 
+.addDesc, .addDesc:hover, .addDesc:active, .addDesc:visited, .addDesc:link {
+  color: red;
+  margin-left: 180px; }
+
+.addDesc:hover, .addDesc:active, .addDesc:visited, .addDesc:link {
+  text-decoration: none; }
+
 .addTask, .addTask:hover, .addTask:active, .addTask:visited, .addTask:link {
   color: gray; }
 
@@ -39,7 +46,7 @@ div {
 nav {
   text-align: center; }
   nav ul {
-    background: #000000;
+    background: black;
     margin: 0px;
     padding: 0px;
     list-style: none; }

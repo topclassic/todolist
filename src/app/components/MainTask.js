@@ -17,13 +17,15 @@ export class MainTask extends React.Component{
         })
     }
     removeTasks(value) {
-
-        let filtered = this.state.tasks.filter((tasks) =>{
-            return tasks !== value
-        })
+        console.log(value)
+        let filtered = this.state.tasks
+        filtered.splice(value, 1);
+        console.log(filtered)
         this.setState({
             tasks: filtered
         })
+
+
     }
     componentWillMount() {
         let tasksList = localStorage.getItem('tasks')
