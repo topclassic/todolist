@@ -1,32 +1,31 @@
-div {
-  text-align: center; }
-  div p {
-    font-family: "Gurmukhi MN", sans-serif;
-    font-size: 30px;
-    color: black;
-    font-variant: small-caps; }
-  div input[type=text], div textarea {
-    padding: 8px 20px;
-    margin: 3px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px; }
-  div input[type=text]::placeholder, div textarea::placeholder {
-    color: #d9d9d9;
-    font-size: small;
-    font-family: "Gurmukhi MN", sans-serif; }
-  div input[type=text]:focus, div textarea:focus {
-    border: 1px solid #555;
-    outline: 0; }
+div p {
+  font-family: "Gurmukhi MN", sans-serif;
+  font-size: 30px;
+  color: black;
+  font-variant: small-caps; }
+div input[type=text], div textarea {
+  padding: 8px 20px;
+  margin: 3px 2px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px; }
+div input[type=text]::placeholder, div textarea::placeholder {
+  color: #d9d9d9;
+  font-size: small;
+  font-family: "Gurmukhi MN", sans-serif; }
+div input[type=text]:focus, div textarea:focus {
+  border: 1px solid #555;
+  outline: 0; }
 
 .center {
-  width: 28%;
+  text-align: center;
+  width: 34%;
   margin: auto;
   float: none; }
 
 .addDesc, .addDesc:hover, .addDesc:active, .addDesc:visited, .addDesc:link {
   color: red;
-  margin-left: 180px; }
+  margin-left: 200px; }
 
 .addDesc:hover, .addDesc:active, .addDesc:visited, .addDesc:link {
   text-decoration: none; }

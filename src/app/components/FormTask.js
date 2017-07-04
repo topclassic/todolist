@@ -61,7 +61,7 @@ export class FormTask extends React.Component{
     }
     renderAddTask(){
         return(
-            <div>
+            <div className="center">
                 <a href="#" onClick={this.addTask} className="addTask" ><span className="glyphicon glyphicon-plus"></span>
                     &nbsp; Add Task </a>
             </div>
@@ -70,7 +70,7 @@ export class FormTask extends React.Component{
     renderEnterTask(){
         let content = ""
         if(this.state.addDesc){
-            content = <div><textarea onChange={this.inputText} rows="4" cols="50" placeholder="description.."></textarea></div>
+            content = <div><textarea onChange={this.inputText} rows="4" cols="66" placeholder="description.."></textarea></div>
         }else{
             content = ""
         }

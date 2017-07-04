@@ -28,8 +28,8 @@ class App extends React.Component {
                     <Header/>
                 </div>
                 <br/>
-                <div>
-                    <p> list task </p>
+                <div className="center">
+                    <p> list </p>
 
                 </div>
                 <br/>
