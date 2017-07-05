@@ -5,7 +5,6 @@ export class UpdateTasks extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            title: props.title,
             edit: false
         }
     }
@@ -30,8 +29,7 @@ export class UpdateTasks extends React.Component{
                                 </button>
                             </td>
                             <td>
-                                <a onClick={this.handleRemove} width="50" href="#" className="addDesc" >
-                                    <span className="glyphicon glyphicon-trash"></span></a>
+
                             </td>
                         </tr>
                         </tbody>
@@ -44,9 +42,17 @@ export class UpdateTasks extends React.Component{
         return(
 
             <div>
-                <input type="text" value={this.state.title} onClick={this.handle} onChange={this.handleUpdate}/>{content}
+                <input type="text" value={this.props.title} onClick={this.handle} onChange={this.handleUpdate}/>
+                <a onClick={this.addDesc} width="50" href="#" className="glyDesc" >
+                    <span className="glyphicon glyphicon-comment"></span></a>
+                <a onClick={this.handleRemove} width="50" href="#" className="glyDelete" >
+                    <span className="glyphicon glyphicon-trash"></span></a>
+                {content}
             </div>
         )
+    }
+    handleRemove = () => {
+        this.props.remove(this.props.key)
     }
     handleUpdate = (e) => {
         this.setState({

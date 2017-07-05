@@ -1,3 +1,7 @@
+div li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
 div p {
   font-family: "Gurmukhi MN", sans-serif;
   font-size: 30px;
@@ -24,7 +28,7 @@ div input[type=text]:focus, div textarea:focus {
   float: none; }
 
 .addDesc, .addDesc:hover, .addDesc:active, .addDesc:visited, .addDesc:link {
-  color: red;
+  color: gray;
   margin-left: 200px; }
 
 .addDesc:hover, .addDesc:active, .addDesc:visited, .addDesc:link {
@@ -41,6 +45,20 @@ div input[type=text]:focus, div textarea:focus {
   color: white;
   border-radius: 3px;
   border: 0px; }
+
+.glyDesc, .glyDesc:hover, .glyDesc:active, .glyDesc:visited, .glyDesc:link {
+  color: gray;
+  margin-left: 100px; }
+
+.glyDesc:hover, .glyDesc:active, .glyDesc:visited, .glyDesc:link {
+  text-decoration: none; }
+
+.glyDelete, .glyDelete:hover, .glyDelete:active, .glyDelete:visited, .glyDelete:link {
+  color: red;
+  margin-left: 20px; }
+
+.glyDelete:hover, .glyDelete:active, .glyDelete:visited, .glyDelete:link {
+  text-decoration: none; }
 
 nav {
   text-align: center; }

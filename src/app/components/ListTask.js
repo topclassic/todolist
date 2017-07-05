@@ -6,7 +6,6 @@ export class ListTask extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            task: "",
             title:""
         }
     }
@@ -18,8 +17,8 @@ export class ListTask extends React.Component{
                     <tbody>
                     <tr>
                         <td>
-                            {this.props.tasks.map((tasks,key) => <li value={key} key={key}  onClick={this.handle}>
-                                {key} <UpdateTasks title={tasks.title}/> {tasks.description} {tasks.date}
+                            {this.props.tasks.map((tasks,key) => <li value={key} key={key} >
+                                <UpdateTasks index={key} remove={this.handleRemove} title={tasks.title}/>
                                 </li>)}
                         </td>
 
@@ -28,17 +27,9 @@ export class ListTask extends React.Component{
                 </table>
 
             </div>
-
-
         )
     }
-    handle = (task) => {
-        this.setState({
-            task: task.target.value,
-        })
-    }
-
-    handleRemove = () => {
-        this.props.removeTasks(this.state.task)
+    handleRemove = (value) => {
+        this.props.removeTasks(value)
     }
 }

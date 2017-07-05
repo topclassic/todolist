@@ -23,10 +23,10 @@ export class MainTask extends React.Component{
         })
     }
     removeTasks(value) {
+        console.log(value)
         const char = [{title:"a",description:"b",date:"c"}]
         let filtered = this.state.tasks
         filtered.splice(value, 1);
-        console.log(filtered)
         this.setState({
             tasks: filtered
         })
