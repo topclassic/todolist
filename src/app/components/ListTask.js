@@ -18,8 +18,8 @@ export class ListTask extends React.Component{
                     <tr>
                         <td>
                             {this.props.tasks.map((tasks,key) => <li value={key} key={key} >
-                                <UpdateTasks index={key} remove={this.handleRemove} title={tasks.title} date={tasks.date}
-                                description={tasks.description}/>
+                                <UpdateTasks index={key} update={this.updateTasks} remove={this.removeTasks}
+                                             title={tasks.title} date={tasks.date} description={tasks.description}/>
                                 <hr/>
                                 </li>)}
                         </td>
@@ -31,7 +31,10 @@ export class ListTask extends React.Component{
             </div>
         )
     }
-    handleRemove = (value) => {
+    removeTasks = (value) => {
         this.props.removeTasks(value)
+    }
+    updateTasks = (value,update) => {
+        this.props.updateTasks(value,update)
     }
 }

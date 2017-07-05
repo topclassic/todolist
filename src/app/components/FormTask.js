@@ -61,7 +61,7 @@ export class FormTask extends React.Component{
     renderEnterTask(){
         let content = ""
         if(this.state.addDesc){
-            content = <div><textarea onChange={this.inputText} rows="4" cols="66" placeholder="description.."></textarea></div>
+            content = <div><textarea onChange={this.inputText} rows="4" cols="64" placeholder="description.."></textarea></div>
         }else{
             content = ""
         }
@@ -76,7 +76,7 @@ export class FormTask extends React.Component{
                                        ref="title" />
                             </td>
                             <td>
-                                <input type="date" ref="date" className="inputText"/>
+                                <input type="date" ref="date" className="inputTextDate"/>
                             </td>
                         </tr>
                         </tbody>

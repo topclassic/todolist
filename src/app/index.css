@@ -16,14 +16,21 @@ div li {
   border: 1px solid #ccc;
   border-radius: 4px; }
 
-.inputText::placeholder, div textarea::placeholder {
+.inputText::placeholder, div textarea::placeholder, .inputTextDate::placeholder {
   color: #d9d9d9;
   font-size: small;
   font-family: "Gurmukhi MN", sans-serif; }
 
-.inputText:focus, div textarea:focus {
+.inputText:focus, div textarea:focus, .inputTextDate:focus {
   border: 1px solid #555;
   outline: 0; }
+
+.inputTextDate {
+  padding: 7px 10px;
+  margin: 3px 2px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px; }
 
 .center {
   text-align: center;

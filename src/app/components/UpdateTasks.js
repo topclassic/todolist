@@ -10,18 +10,19 @@ export class UpdateTasks extends React.Component{
             taskDone: false,
             title: props.title,
             date: props.date,
-            description: props.description
+            description: props.description,
+
+            taskUpdate:{
+                title: props.title,
+                date: props.date,
+                description: props.description
+            }
         }
 
     }
     addDesc = () =>{
         this.setState({
             addDesc: !this.state.addDesc
-        })
-    }
-    cancelTask = () =>{
-        this.setState({
-            edit: false
         })
     }
     taskDone = () =>{
@@ -55,9 +56,9 @@ export class UpdateTasks extends React.Component{
                         <tr>
                             <td>
                                 <br/>
-                                <button onClick={this.cancelTask} value="Add" type="button" className="btn btn-success btn-xs">Update
+                                <button onClick={this.handleUpdate} value="Add" type="button" className="btn btn-success btn-xs">Update
                                 </button>
-                                <button type="button" onClick={this.cancelTask} className="btn btn-link btn-xs">
+                                <button type="button" onClick={this.handleCancel} className="btn btn-link btn-xs">
                                     Cancel
                                 </button>
                             </td>
@@ -74,7 +75,7 @@ export class UpdateTasks extends React.Component{
         }
         let contentDesc = ""
         if(this.state.addDesc){
-            contentDesc = <div><textarea onClick={this.handle} value={this.state.description} onChange={this.handleUpdate} rows="4" cols="66" placeholder="description.."></textarea></div>
+            contentDesc = <div><textarea onClick={this.handleClick} value={this.state.description} onChange={this.handle} rows="4" cols="64" placeholder="description.."></textarea></div>
         }else{
             contentDesc = ""
         }
@@ -95,7 +96,7 @@ export class UpdateTasks extends React.Component{
                             {this.props.index}
                             &nbsp;&nbsp;&nbsp;
                             Date&nbsp;:&nbsp;&nbsp;
-                            <input ref="date" type="text" className="textUpdate" value={this.state.date} onClick={this.handle} onChange={this.handleUpdate}/>
+                            <input ref="date" type="text" className="textUpdate" value={this.state.date} onClick={this.handleClick} onChange={this.handle}/>
                         </td>
                     </tr>
                     <tr>
@@ -104,7 +105,7 @@ export class UpdateTasks extends React.Component{
                         </td>
                         <td className="td">
                             Tittle&nbsp;:&nbsp;&nbsp;
-                            <input ref="title" type="text" className="textUpdate" value={this.state.title} onClick={this.handle} onChange={this.handleUpdate} size="52"/>
+                            <input ref="title" type="text" className="textUpdate" value={this.state.title} onClick={this.handleClick} onChange={this.handle} size="52"/>
                         </td>
                         <td>
                             <a onClick={this.addDesc} width="50" href="#" className="glyDesc" >
@@ -134,7 +135,18 @@ export class UpdateTasks extends React.Component{
 
         this.props.remove(this.props.index)
     }
-    handleUpdate = (e) => {
+    handleCancel = () =>{
+        this.setState({
+            edit: false
+        })
+    }
+    handleUpdate = () => {
+        this.setState({
+            edit: false
+        })
+
+    }
+    handle = (e) => {
         this.setState({
             title: this.refs.title.value,
             date: this.refs.date.value,
@@ -148,10 +160,9 @@ export class UpdateTasks extends React.Component{
             date: nextProps.date
         })
     }
-    handle = () => {
+    handleClick = () => {
         this.setState({
             edit: true
-
         })
     }
     render(){

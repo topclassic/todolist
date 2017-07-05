@@ -11,9 +11,11 @@ export class MainTask extends React.Component{
             update:{title:"OK",description:"OK",date:"Ok"}
         }
     }
-    updateTasks(update){
+    updateTasks(value,update){
+        let filtered = this.state.tasks
+        filtered.splice(value, 1,update);
         this.setState({
-
+            tasks: filtered
         })
     }
     addTasks(tasks) {
