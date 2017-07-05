@@ -8,7 +8,7 @@ export class MainTask extends React.Component{
         super(props)
         this.state ={
             tasks:[],
-            update:{title:"",description:"",date:""}
+            update:{title:"OK",description:"OK",date:"Ok"}
         }
     }
     updateTasks(update){
@@ -23,15 +23,12 @@ export class MainTask extends React.Component{
         })
     }
     removeTasks(value) {
-        console.log(value)
-        const char = [{title:"a",description:"b",date:"c"}]
+
         let filtered = this.state.tasks
         filtered.splice(value, 1);
         this.setState({
             tasks: filtered
         })
-
-
     }
     componentDidMount() {
         let tasksList = localStorage.getItem('tasks')

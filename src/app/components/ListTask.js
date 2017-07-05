@@ -6,7 +6,7 @@ export class ListTask extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            title:""
+
         }
     }
     render() {

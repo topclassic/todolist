@@ -12,6 +12,7 @@ export class UpdateTasks extends React.Component{
             date: props.date,
             description: props.description
         }
+
     }
     addDesc = () =>{
         this.setState({
@@ -77,6 +78,7 @@ export class UpdateTasks extends React.Component{
         }else{
             contentDesc = ""
         }
+
         return(
 
             <div>
@@ -102,7 +104,7 @@ export class UpdateTasks extends React.Component{
                         </td>
                         <td className="td">
                             Tittle&nbsp;:&nbsp;&nbsp;
-                            <input ref="title" type="text" className="textUpdate" value={this.props.title} onClick={this.handle} onChange={this.handleUpdate} size="52"/>
+                            <input ref="title" type="text" className="textUpdate" value={this.state.title} onClick={this.handle} onChange={this.handleUpdate} size="52"/>
                         </td>
                         <td>
                             <a onClick={this.addDesc} width="50" href="#" className="glyDesc" >
@@ -128,13 +130,6 @@ export class UpdateTasks extends React.Component{
             </div>
         )
     }
-    componentWillReceiveProps() {
-        this.setState({
-            title: this.props.title,
-            date: this.props.date,
-            description: this.props.description
-        })
-    }
     handleRemove = () => {
 
         this.props.remove(this.props.index)
@@ -146,16 +141,26 @@ export class UpdateTasks extends React.Component{
             description: e.target.value
         })
     }
+    componentWillReceiveProps(nextProps){
+        this.setState({
+            title: nextProps.title,
+            description: nextProps.description,
+            date: nextProps.date
+        })
+    }
     handle = () => {
         this.setState({
             edit: true
+
         })
     }
     render(){
+
         if(this.state.taskDone){
             return this.renderTaskDone()
         }else{
             return this.renderShowTask()
         }
+
     }
 }
