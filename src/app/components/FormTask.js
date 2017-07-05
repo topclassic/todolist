@@ -32,7 +32,7 @@ export class FormTask extends React.Component{
         let description = this.state.description
         let date = this.refs.date.value
         title && date && this.props.addTasks({title,date,description})
-        !title || !date ? alert("Please enter title and date"):
+        !title || !date ? alert("Please enter title and date"):""
 
         this.refs.title.value = ""
         this.state.description = ""

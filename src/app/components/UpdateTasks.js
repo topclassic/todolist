@@ -7,7 +7,6 @@ export class UpdateTasks extends React.Component{
         this.state = {
             edit: false,
             addDesc: false,
-            taskDone: false,
 
             taskUpdate:{
                 title: props.title,
@@ -22,121 +21,14 @@ export class UpdateTasks extends React.Component{
             addDesc: !this.state.addDesc
         })
     }
-    taskDone = () =>{
-        this.setState({
-            taskDone: true
-        })
+    addTaskDone = (e) =>{
+        e.preventDefault()
+        let title = this.props.title
+        let date = this.props.date
+        title && date && this.props.addTasksDone({title,date})
+        this.props.remove(this.props.index)
     }
-    renderTaskDone(){
-        return(
-        <div>
-            <table>
-                <tbody>
-                <tr>
-                    <td>
-                        <a href="#" className="glyOk" >
-                            <span className="glyphicon glyphicon-ok"></span></a>
-                    </td>
-                    <td className="td">
-                        <label>{this.props.date}</label>
-                    </td>
-                    <td className="td">
-                        <label>{this.props.title}</label>
-                    </td>
-                    <td>
-                        <a onClick={this.handleRemove} href="#" className="glyDelete" >
-                            <span className="glyphicon glyphicon-trash"></span></a>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        )
-    }
-    renderShowTask(){
-        let content = ""
-        if(this.state.edit){
-            content =
-                <div>
-                    <table>
-                        <tbody>
-                        <tr>
-                            <td>
-                                <br/>
-                                <button onClick={this.handleUpdate} value="Add" type="button" className="btn btn-success btn-sm">Update
-                                </button>
-                                <button type="button" onClick={this.handleCancel} className="btn btn-link btn-sm">
-                                    Cancel
-                                </button>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
 
-                </div>
-        }else{
-            content = ""
-        }
-        let contentDesc = ""
-        if(this.state.addDesc){
-            contentDesc = <div><textarea onClick={this.handleClick} value={this.state.taskUpdate.description} onChange={this.handleDesc} rows="4" cols="64" placeholder="description.."></textarea></div>
-        }else{
-            contentDesc = ""
-        }
-
-        return(
-
-            <div>
-                <table>
-                    <tbody>
-                    <tr>
-                        <td>
-                            <a onClick={this.taskDone} width="50" href="#" className="glyUnchecked" >
-                                <span className="glyphicon glyphicon-unchecked"></span></a>
-
-                        </td>
-                        <td className="td">
-                            <label>
-                                Task&nbsp;ID&nbsp;:&nbsp;&nbsp;
-                                {this.props.index}
-                                &nbsp;&nbsp;&nbsp;
-                                Date&nbsp;:&nbsp;&nbsp;
-                            </label>
-                            <input ref="date" type="text" className="textUpdate" value={this.state.taskUpdate.date} onClick={this.handleClick} onChange={this.handle}/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-
-                        </td>
-                        <td className="td">
-                            <label>Tittle&nbsp;:&nbsp;&nbsp;</label>
-                            <input ref="title" type="text" className="textUpdate" value={this.state.taskUpdate.title} onClick={this.handleClick} onChange={this.handle} size="52"/>
-                        </td>
-                        <td>
-                            <a onClick={this.addDesc} width="50" href="#" className="glyDesc" >
-                                <span className="glyphicon glyphicon-comment"></span></a>
-
-                        </td>
-                        <td>
-                            <a onClick={this.handleRemove} width="50" href="#" className="glyDelete" >
-                                <span className="glyphicon glyphicon-trash"></span></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-
-                        </td>
-                        <td className="td">
-                            {contentDesc}
-                            {content}
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        )
-    }
     handleRemove = () => {
 
         this.props.remove(this.props.index)
@@ -185,12 +77,88 @@ export class UpdateTasks extends React.Component{
         })
     }
     render(){
+        let content = ""
+        if(this.state.edit){
+            content =
+                <div>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <br/>
+                                <button onClick={this.handleUpdate} value="Add" type="button" className="btn btn-success btn-sm">Update
+                                </button>
+                                <button type="button" onClick={this.handleCancel} className="btn btn-link btn-sm">
+                                    Cancel
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
 
-        if(this.state.taskDone){
-            return this.renderTaskDone()
+                </div>
         }else{
-            return this.renderShowTask()
+            content = ""
         }
+        let contentDesc = ""
+        if(this.state.addDesc){
+            contentDesc = <div><textarea onClick={this.handleClick} value={this.state.taskUpdate.description} onChange={this.handleDesc} rows="4" cols="64" placeholder="description.."></textarea></div>
+        }else{
+            contentDesc = ""
+        }
+
+        return(
+
+            <div>
+                <table>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <a onClick={this.addTaskDone} width="50" href="#" className="glyUnchecked" >
+                                <span className="glyphicon glyphicon-unchecked"></span></a>
+
+                        </td>
+                        <td className="td">
+                            <label>
+                                Task&nbsp;ID&nbsp;:&nbsp;&nbsp;
+                                {this.props.index}
+                                &nbsp;&nbsp;&nbsp;
+                                Date&nbsp;:&nbsp;&nbsp;
+                            </label>
+                            <input ref="date" type="text" className="textUpdate" value={this.state.taskUpdate.date} onClick={this.handleClick} onChange={this.handle}/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+
+                        </td>
+                        <td className="td">
+                            <label>Tittle&nbsp;:&nbsp;&nbsp;</label>
+                            <input ref="title" type="text" className="textUpdate" value={this.state.taskUpdate.title} onClick={this.handleClick} onChange={this.handle} size="52"/>
+                        </td>
+                        <td>
+                            <a onClick={this.addDesc} href="#" className="glyDesc" >
+                                <span className="glyphicon glyphicon-comment"></span></a>
+
+                        </td>
+                        <td>
+                            <a onClick={this.handleRemove} href="#" className="glyDelete" >
+                                <span className="glyphicon glyphicon-trash"></span></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+
+                        </td>
+                        <td className="td">
+                            {contentDesc}
+                            {content}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        )
 
     }
 }

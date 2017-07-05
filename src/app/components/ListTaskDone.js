@@ -1,16 +1,26 @@
 import React from "react";
+import {CompleteTasks} from "./CompleteTasks";
 
 export class ListTaskDone extends React.Component{
 
-    render(){
-        return(
-            <nav>
-                <ul>
-                    <p className="p1">todo list application</p>
+    render() {
+        return (
+            <div>
+                <table>
+                    <tbody>
+                    <tr>
+                        <td>
+                            {this.props.tasksDone.map((tasksDone,key) => <li className="li" key={key} >
+                                <CompleteTasks title={tasksDone.title} date={tasksDone.date}/>
+                                <hr/>
+                            </li>)}
+                        </td>
 
-                </ul>
+                    </tr>
+                    </tbody>
+                </table>
 
-            </nav>
+            </div>
         )
     }
 }
