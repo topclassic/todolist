@@ -12,7 +12,7 @@ Setup & Run
 - Add new task
 - Update task
 - Remove task
-- Mask task done
+- Select task done
 - View detail
 - View complete task
 - Repeate task
