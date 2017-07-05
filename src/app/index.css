@@ -1,7 +1,15 @@
 div li {
   list-style-type: none;
-  margin-left: 470px;
+  margin-left: 442px;
   padding: 0; }
+div textarea {
+  padding: 8px 20px;
+  width: 582px;
+  margin-right: 3px;
+  margin-top: 3px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px; }
 
 .p {
   font-family: "Gurmukhi MN", sans-serif;
@@ -9,9 +17,10 @@ div li {
   color: black;
   font-variant: small-caps; }
 
-.inputText, div textarea {
+.inputText {
   padding: 8px 20px;
-  margin: 3px 2px;
+  width: 406px;
+  margin-right: 3px;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px; }
@@ -27,6 +36,7 @@ div li {
 
 .inputTextDate {
   padding: 7px 10px;
+  width: 170px;
   margin: 3px 2px;
   display: inline-block;
   border: 1px solid #ccc;
@@ -62,7 +72,7 @@ div li {
   border-radius: 0; }
 
 .textUpdate:focus {
-  border: 0;
+  border: 1px solid #555;
   outline: 0; }
 
 .glyOk, .glyOk:hover, .glyOk:active, .glyOk:visited, .glyOk:link {
@@ -78,6 +88,7 @@ div li {
   text-decoration: none; }
 
 .glyDesc, .glyDesc:hover, .glyDesc:active, .glyDesc:visited, .glyDesc:link {
+  margin-left: 20px;
   color: orange; }
 
 .glyDesc:hover, .glyDesc:active, .glyDesc:visited, .glyDesc:link {

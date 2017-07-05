@@ -3,12 +3,6 @@ import {UpdateTasks} from "./UpdateTasks";
 
 export class ListTask extends React.Component{
 
-    constructor(props){
-        super(props)
-        this.state = {
-
-        }
-    }
     render() {
 
         return (
@@ -18,7 +12,7 @@ export class ListTask extends React.Component{
                     <tr>
                         <td>
                             {this.props.tasks.map((tasks,key) => <li value={key} key={key} >
-                                <UpdateTasks index={key} update={this.updateTasks} remove={this.removeTasks}
+                                <UpdateTasks index={key} update={this.updateTasks} remove={this.removeTasks} addTasksDone={this.addTasksDone}
                                              title={tasks.title} date={tasks.date} description={tasks.description}/>
                                 <hr/>
                                 </li>)}
@@ -36,5 +30,8 @@ export class ListTask extends React.Component{
     }
     updateTasks = (value,update) => {
         this.props.updateTasks(value,update)
+    }
+    addTasksDone = (value) => {
+        this.props.addTasksDone(value)
     }
 }

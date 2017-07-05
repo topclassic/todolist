@@ -8,7 +8,7 @@ export class MainTask extends React.Component{
         super(props)
         this.state ={
             tasks:[],
-            update:{title:"OK",description:"OK",date:"Ok"}
+            tasksDone:[]
         }
     }
     updateTasks(value,update){
@@ -18,8 +18,12 @@ export class MainTask extends React.Component{
             tasks: filtered
         })
     }
+    addTasksDone = (tasksDone) => {
+        this.setState({
+            tasksDone: this.state.tasksDone.concat(tasksDone)
+        })
+    }
     addTasks(tasks) {
-
         this.setState({
             tasks: this.state.tasks.concat(tasks)
         })
@@ -47,8 +51,22 @@ export class MainTask extends React.Component{
     render() {
 
         return (
+
             <div>
-                <ListTask tasks={this.state.tasks} removeTasks={this.removeTasks.bind(this)} updateTasks={this.updateTasks.bind(this)}/>
+                <nav>
+                    <ul>
+                        <p className="p1">todo list application</p>
+
+                    </ul>
+
+                </nav>
+                <br/>
+                <div className="center">
+                    <p className="p"> list </p>
+
+                </div>
+                <br/>
+                <ListTask addTasksDone={this.addTasksDone} tasks={this.state.tasks} removeTasks={this.removeTasks.bind(this)} updateTasks={this.updateTasks.bind(this)}/>
                 <FormTask addTasks={this.addTasks.bind(this)} />
             </div>
         )

@@ -8,9 +8,6 @@ export class UpdateTasks extends React.Component{
             edit: false,
             addDesc: false,
             taskDone: false,
-            title: props.title,
-            date: props.date,
-            description: props.description,
 
             taskUpdate:{
                 title: props.title,
@@ -37,8 +34,18 @@ export class UpdateTasks extends React.Component{
                 <tbody>
                 <tr>
                     <td>
-                        <a  width="50" href="#" className="glyOk" >
+                        <a href="#" className="glyOk" >
                             <span className="glyphicon glyphicon-ok"></span></a>
+                    </td>
+                    <td className="td">
+                        <label>{this.props.date}</label>
+                    </td>
+                    <td className="td">
+                        <label>{this.props.title}</label>
+                    </td>
+                    <td>
+                        <a onClick={this.handleRemove} href="#" className="glyDelete" >
+                            <span className="glyphicon glyphicon-trash"></span></a>
                     </td>
                 </tr>
                 </tbody>
@@ -56,14 +63,11 @@ export class UpdateTasks extends React.Component{
                         <tr>
                             <td>
                                 <br/>
-                                <button onClick={this.handleUpdate} value="Add" type="button" className="btn btn-success btn-xs">Update
+                                <button onClick={this.handleUpdate} value="Add" type="button" className="btn btn-success btn-sm">Update
                                 </button>
-                                <button type="button" onClick={this.handleCancel} className="btn btn-link btn-xs">
+                                <button type="button" onClick={this.handleCancel} className="btn btn-link btn-sm">
                                     Cancel
                                 </button>
-                            </td>
-                            <td>
-
                             </td>
                         </tr>
                         </tbody>
@@ -75,7 +79,7 @@ export class UpdateTasks extends React.Component{
         }
         let contentDesc = ""
         if(this.state.addDesc){
-            contentDesc = <div><textarea onClick={this.handleClick} value={this.state.description} onChange={this.handle} rows="4" cols="64" placeholder="description.."></textarea></div>
+            contentDesc = <div><textarea ref="description" onClick={this.handleClick} value={this.state.taskUpdate.description} onChange={this.handle} rows="4" cols="64" placeholder="description.."></textarea></div>
         }else{
             contentDesc = ""
         }
@@ -96,7 +100,7 @@ export class UpdateTasks extends React.Component{
                             {this.props.index}
                             &nbsp;&nbsp;&nbsp;
                             Date&nbsp;:&nbsp;&nbsp;
-                            <input ref="date" type="text" className="textUpdate" value={this.state.date} onClick={this.handleClick} onChange={this.handle}/>
+                            <input ref="date" type="text" className="textUpdate" value={this.state.taskUpdate.date} onClick={this.handleClick} onChange={this.handle}/>
                         </td>
                     </tr>
                     <tr>
@@ -105,7 +109,7 @@ export class UpdateTasks extends React.Component{
                         </td>
                         <td className="td">
                             Tittle&nbsp;:&nbsp;&nbsp;
-                            <input ref="title" type="text" className="textUpdate" value={this.state.title} onClick={this.handleClick} onChange={this.handle} size="52"/>
+                            <input ref="title" type="text" className="textUpdate" value={this.state.taskUpdate.title} onClick={this.handleClick} onChange={this.handle} size="52"/>
                         </td>
                         <td>
                             <a onClick={this.addDesc} width="50" href="#" className="glyDesc" >
@@ -144,20 +148,24 @@ export class UpdateTasks extends React.Component{
         this.setState({
             edit: false
         })
-
+        this.props.update(this.props.index,this.state.taskUpdate)
     }
     handle = (e) => {
         this.setState({
-            title: this.refs.title.value,
-            date: this.refs.date.value,
-            description: e.target.value
+            taskUpdate:{
+                title: this.refs.title.value,
+                date: this.refs.date.value,
+                description: this.refs.description.value
+            }
         })
     }
     componentWillReceiveProps(nextProps){
         this.setState({
-            title: nextProps.title,
-            description: nextProps.description,
-            date: nextProps.date
+            taskUpdate:{
+                title: nextProps.title,
+                date: nextProps.date,
+                description: nextProps.description
+            }
         })
     }
     handleClick = () => {

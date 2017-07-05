@@ -1,6 +1,6 @@
 import React from "react";
 
-export class Header extends React.Component{
+export class ListTaskDone extends React.Component{
 
     render(){
         return(

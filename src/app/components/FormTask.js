@@ -7,10 +7,10 @@ export class FormTask extends React.Component{
         this.state = {
             add: false,
             addDesc: false,
-            description:""
+            description:"Some thing.."
         }
     }
-    addTask = () =>{
+    enterTask = () =>{
         this.setState({
             add: true
 
@@ -21,7 +21,7 @@ export class FormTask extends React.Component{
             addDesc: !this.state.addDesc
         })
     }
-    enterTask = (e) =>{
+    addTasks = (e) =>{
         e.preventDefault()
         this.setState({
             add: false,
@@ -31,7 +31,7 @@ export class FormTask extends React.Component{
         let title = this.refs.title.value
         let description = this.state.description
         let date = this.refs.date.value
-        title && date && this.props.addTasks({title,description,date})
+        title && date && this.props.addTasks({title,date,description})
         !title || !date ? alert("Please enter title and date"):
 
         this.refs.title.value = ""
@@ -53,7 +53,7 @@ export class FormTask extends React.Component{
     renderAddTask(){
         return(
             <div className="center">
-                <a href="#" onClick={this.addTask} className="addTask" ><span className="glyphicon glyphicon-plus"></span>
+                <a href="#" onClick={this.enterTask} className="addTask" ><span className="glyphicon glyphicon-plus"></span>
                     &nbsp; Add Task </a>
             </div>
         )
@@ -72,8 +72,7 @@ export class FormTask extends React.Component{
                         <tbody>
                         <tr>
                             <td>
-                                <input className="inputText" type="text" placeholder="title task.." size="40"
-                                       ref="title" />
+                                <input className="inputText" type="text" placeholder="title task.." ref="title" />
                             </td>
                             <td>
                                 <input type="date" ref="date" className="inputTextDate"/>
@@ -94,14 +93,14 @@ export class FormTask extends React.Component{
                         <tbody>
                         <tr>
                             <td>
-                                <button onClick={this.enterTask} value="Add" type="button" className="btn btn-success">Add Task
+                                <button onClick={this.addTasks} value="Add" type="button" className="btn btn-success">Add Task
                                 </button>
                                 <button type="button" onClick={this.cancelTask} className="btn btn-link">
                                     Cancel
                                 </button>
                             </td>
                             <td>
-                                <a onClick={this.addDesc} width="50" href="#" className="addDesc" >
+                                <a onClick={this.addDesc} href="#" className="addDesc" >
                                     <span className="glyphicon glyphicon-comment"></span></a>
                             </td>
                         </tr>
