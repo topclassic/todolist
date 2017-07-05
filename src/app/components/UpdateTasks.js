@@ -62,6 +62,11 @@ export class UpdateTasks extends React.Component{
                     <tbody>
                     <tr>
                         <td>
+                            <a width="50" href="#" className="" >
+                                <span className="glyphicon glyphicon-unchecked"></span></a>
+
+                        </td>
+                        <td className="td">
                             Task&nbsp;ID&nbsp;:&nbsp;&nbsp;
                             {this.props.index}
                             &nbsp;&nbsp;&nbsp;
@@ -71,8 +76,11 @@ export class UpdateTasks extends React.Component{
                     </tr>
                     <tr>
                         <td>
+
+                        </td>
+                        <td className="td">
                             Tittle&nbsp;:&nbsp;&nbsp;
-                            <input ref="title" type="text" className="textUpdate" value={this.state.title} onClick={this.handle} onChange={this.handleUpdate} size="52"/>
+                            <input ref="title" type="text" className="textUpdate" value={this.props.title} onClick={this.handle} onChange={this.handleUpdate} size="52"/>
                         </td>
                         <td>
                             <a onClick={this.addDesc} width="50" href="#" className="glyDesc" >
@@ -84,19 +92,29 @@ export class UpdateTasks extends React.Component{
                                 <span className="glyphicon glyphicon-trash"></span></a>
                         </td>
                     </tr>
+                    <tr>
+                        <td>
+
+                        </td>
+                        <td className="td">
+                            {contentDesc}
+                            {content}
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
-                {contentDesc}
-                {content}
             </div>
         )
     }
-    handleRemove = () => {
+    componentWillReceiveProps() {
         this.setState({
             title: this.props.title,
             date: this.props.date,
             description: this.props.description
         })
+    }
+    handleRemove = () => {
+
         this.props.remove(this.props.index)
     }
     handleUpdate = (e) => {

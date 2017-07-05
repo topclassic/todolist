@@ -33,7 +33,7 @@ export class MainTask extends React.Component{
 
 
     }
-    componentWillMount() {
+    componentDidMount() {
         let tasksList = localStorage.getItem('tasks')
         if (tasksList) {
             this.setState({
