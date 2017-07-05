@@ -7,8 +7,14 @@ export class MainTask extends React.Component{
     constructor(props) {
         super(props)
         this.state ={
-            tasks:[]
+            tasks:[],
+            update:[]
         }
+    }
+    updateTasks(update){
+        this.setState({
+            update: this.state.update.concat(update)
+        })
     }
     addTasks(tasks) {
 
@@ -17,6 +23,7 @@ export class MainTask extends React.Component{
         })
     }
     removeTasks(value) {
+        const char = [{title:"a",description:"b",date:"c"}]
         let filtered = this.state.tasks
         filtered.splice(value, 1);
         console.log(filtered)
@@ -42,7 +49,7 @@ export class MainTask extends React.Component{
 
         return (
             <div>
-                <ListTask tasks={this.state.tasks} removeTasks={this.removeTasks.bind(this)} />
+                <ListTask tasks={this.state.tasks} removeTasks={this.removeTasks.bind(this)} updateTasks={this.updateTasks.bind(this)}/>
                 <FormTask addTasks={this.addTasks.bind(this)} />
             </div>
         )
