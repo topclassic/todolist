@@ -5,41 +5,40 @@ div
 
   li
     list-style-type: none
-    margin: 0
+    margin-left: 470px
     padding: 0
 
-  p
 
-    font-family: $font
-    font-size: 30px
-    color: black
-    font-variant: small-caps
-
-  input[type=text]
-    padding: 8px 20px
-    margin: 3px 2px
-    display: inline-block
-    border: 1px solid #ccc
-    border-radius: 4px
-
-  input[type=text]::placeholder
-    color: $placeholder
-    font-size: small
-    font-family: $font
-
-
-  input[type=text]:focus
-    border: 1px solid #555
-    outline: 0
 
   textarea
-    @extend input[type=text]
+    @extend .inputText
 
   textarea::placeholder
-    @extend input[type=text]::placeholder
+    @extend .inputText::placeholder
 
   textarea:focus
-    @extend input[type=text]:focus
+    @extend .inputText:focus
+
+.p
+  font-family: $font
+  font-size: 30px
+  color: black
+  font-variant: small-caps
+
+.inputText
+  padding: 8px 20px
+  margin: 3px 2px
+  display: inline-block
+  border: 1px solid #ccc
+  border-radius: 4px
+.inputText::placeholder
+  color: $placeholder
+  font-size: small
+  font-family: $font
+.inputText:focus
+  border: 1px solid #555
+  outline: 0
+
 
 .center
 
@@ -62,11 +61,8 @@ div
   @extend .addTask
   text-decoration: none
 
-.btn-default
+.btn-success
   background-color: gray
   color: white
   border-radius: 3px
   border: 0px
-
-
-.textBox

@@ -18,7 +18,9 @@ export class ListTask extends React.Component{
                     <tr>
                         <td>
                             {this.props.tasks.map((tasks,key) => <li value={key} key={key} >
-                                <UpdateTasks index={key} remove={this.handleRemove} title={tasks.title}/>
+                                <UpdateTasks index={key} remove={this.handleRemove} title={tasks.title} date={tasks.date}
+                                description={tasks.description}/>
+                                <hr/>
                                 </li>)}
                         </td>
 

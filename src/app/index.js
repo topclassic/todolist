@@ -29,7 +29,7 @@ class App extends React.Component {
                 </div>
                 <br/>
                 <div className="center">
-                    <p> list </p>
+                    <p className="p"> list </p>
 
                 </div>
                 <br/>

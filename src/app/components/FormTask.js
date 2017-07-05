@@ -1,24 +1,14 @@
 import React from "react"
-import DatePicker from 'react-datepicker'
-import moment from 'moment'
-
-import 'react-datepicker/dist/react-datepicker.css'
 
 export class FormTask extends React.Component{
 
     constructor(props){
         super(props)
         this.state = {
-            date: moment(),
             add: false,
             addDesc: false,
             description:""
         }
-    }
-    handleChange = (date) => {
-        this.setState({
-            date: date
-        });
     }
     addTask = () =>{
         this.setState({
@@ -40,10 +30,9 @@ export class FormTask extends React.Component{
 
         let title = this.refs.title.value
         let description = this.state.description
-        let date = this.state.date.calendar()
+        let date = this.refs.date.value
         title && date && this.props.addTasks({title,description,date})
         this.refs.title.value = ""
-        this.state.date = moment()
         this.state.description = ""
     }
 
@@ -81,11 +70,11 @@ export class FormTask extends React.Component{
                         <tbody>
                         <tr>
                             <td>
-                                <input type="text" placeholder="title task.." size="40"
+                                <input className="inputText" type="text" placeholder="title task.." size="40"
                                        ref="title" />
                             </td>
                             <td>
-                                <DatePicker selected={this.state.date} onChange={this.handleChange}/>
+                                <input type="date" ref="date" className="inputText"/>
                             </td>
                         </tr>
                         </tbody>
@@ -103,7 +92,7 @@ export class FormTask extends React.Component{
                         <tbody>
                         <tr>
                             <td>
-                                <button onClick={this.enterTask} value="Add" type="button" className="btn btn-default">Add Task
+                                <button onClick={this.enterTask} value="Add" type="button" className="btn btn-success">Add Task
                                 </button>
                                 <button type="button" onClick={this.cancelTask} className="btn btn-link">
                                     Cancel

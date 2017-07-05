@@ -6,7 +6,7 @@ export class Header extends React.Component{
         return(
             <nav>
                 <ul>
-                    <p>TODO LIST APPLICATION</p>
+                    <p className="p1">todo list application</p>
 
                 </ul>
 
