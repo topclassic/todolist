@@ -51,7 +51,7 @@ export class UpdateTasks extends React.Component{
         }
         let contentDesc = ""
         if(this.state.addDesc){
-            contentDesc = <div><textarea onClick={this.handle} value={this.state.description} ref="description" onChange={this.inputText} rows="4" cols="66" placeholder="description.."></textarea></div>
+            contentDesc = <div><textarea onClick={this.handle} value={this.state.description} onChange={this.handleUpdate} rows="4" cols="66" placeholder="description.."></textarea></div>
         }else{
             contentDesc = ""
         }
@@ -72,7 +72,7 @@ export class UpdateTasks extends React.Component{
                     <tr>
                         <td>
                             Tittle&nbsp;:&nbsp;&nbsp;
-                            <input type="text" className="textUpdate" value={this.state.title} onClick={this.handle} onChange={this.handleUpdate} size="52"/>
+                            <input ref="title" type="text" className="textUpdate" value={this.state.title} onClick={this.handle} onChange={this.handleUpdate} size="52"/>
                         </td>
                         <td>
                             <a onClick={this.addDesc} width="50" href="#" className="glyDesc" >
@@ -92,13 +92,18 @@ export class UpdateTasks extends React.Component{
         )
     }
     handleRemove = () => {
+        this.setState({
+            title: this.props.title,
+            date: this.props.date,
+            description: this.props.description
+        })
         this.props.remove(this.props.index)
     }
     handleUpdate = (e) => {
         this.setState({
-            title: e.target.value,
+            title: this.refs.title.value,
             date: this.refs.date.value,
-            description: this.refs.description
+            description: e.target.value
         })
     }
     handle = () => {
