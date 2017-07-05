@@ -8,12 +8,12 @@ export class MainTask extends React.Component{
         super(props)
         this.state ={
             tasks:[],
-            update:[]
+            update:{title:"",description:"",date:""}
         }
     }
     updateTasks(update){
         this.setState({
-            update: this.state.update.concat(update)
+
         })
     }
     addTasks(tasks) {

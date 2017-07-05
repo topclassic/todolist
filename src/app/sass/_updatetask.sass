@@ -6,9 +6,20 @@
   border: 0
   outline: 0
 
+.glyOk
+  color: green
+.glyOk:hover, .glyOk:active, .glyOk:visited, .glyOk:link
+  @extend .glyOk
+  text-decoration: none
+
+.glyUnchecked
+  color: gray
+.glyUnchecked:hover, .glyUnchecked:active, .glyUnchecked:visited, .glyUnchecked:link
+  @extend .glyUnchecked
+  text-decoration: none
 
 .glyDesc
-  color: gray
+  color: orange
 .glyDesc:hover, .glyDesc:active, .glyDesc:visited, .glyDesc:link
   @extend .glyDesc
   text-decoration: none

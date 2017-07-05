@@ -32,7 +32,7 @@ div li {
   float: none; }
 
 .addDesc, .addDesc:hover, .addDesc:active, .addDesc:visited, .addDesc:link {
-  color: gray;
+  color: orange;
   margin-left: 200px; }
 
 .addDesc:hover, .addDesc:active, .addDesc:visited, .addDesc:link {
@@ -58,8 +58,20 @@ div li {
   border: 0;
   outline: 0; }
 
-.glyDesc, .glyDesc:hover, .glyDesc:active, .glyDesc:visited, .glyDesc:link {
+.glyOk, .glyOk:hover, .glyOk:active, .glyOk:visited, .glyOk:link {
+  color: green; }
+
+.glyOk:hover, .glyOk:active, .glyOk:visited, .glyOk:link {
+  text-decoration: none; }
+
+.glyUnchecked, .glyUnchecked:hover, .glyUnchecked:active, .glyUnchecked:visited, .glyUnchecked:link {
   color: gray; }
+
+.glyUnchecked:hover, .glyUnchecked:active, .glyUnchecked:visited, .glyUnchecked:link {
+  text-decoration: none; }
+
+.glyDesc, .glyDesc:hover, .glyDesc:active, .glyDesc:visited, .glyDesc:link {
+  color: orange; }
 
 .glyDesc:hover, .glyDesc:active, .glyDesc:visited, .glyDesc:link {
   text-decoration: none; }

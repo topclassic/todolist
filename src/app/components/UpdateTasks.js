@@ -7,6 +7,7 @@ export class UpdateTasks extends React.Component{
         this.state = {
             edit: false,
             addDesc: false,
+            taskDone: false,
             title: props.title,
             date: props.date,
             description: props.description
@@ -22,7 +23,28 @@ export class UpdateTasks extends React.Component{
             edit: false
         })
     }
-    render(){
+    taskDone = () =>{
+        this.setState({
+            taskDone: true
+        })
+    }
+    renderTaskDone(){
+        return(
+        <div>
+            <table>
+                <tbody>
+                <tr>
+                    <td>
+                        <a  width="50" href="#" className="glyOk" >
+                            <span className="glyphicon glyphicon-ok"></span></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        )
+    }
+    renderShowTask(){
         let content = ""
         if(this.state.edit){
             content =
@@ -62,7 +84,7 @@ export class UpdateTasks extends React.Component{
                     <tbody>
                     <tr>
                         <td>
-                            <a width="50" href="#" className="" >
+                            <a onClick={this.taskDone} width="50" href="#" className="glyUnchecked" >
                                 <span className="glyphicon glyphicon-unchecked"></span></a>
 
                         </td>
@@ -128,5 +150,12 @@ export class UpdateTasks extends React.Component{
         this.setState({
             edit: true
         })
+    }
+    render(){
+        if(this.state.taskDone){
+            return this.renderTaskDone()
+        }else{
+            return this.renderShowTask()
+        }
     }
 }
