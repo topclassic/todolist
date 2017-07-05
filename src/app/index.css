@@ -66,6 +66,11 @@ div textarea {
   margin-left: 442px;
   padding: 0; }
 
+.liTasksDone {
+  list-style-type: none;
+  margin-left: 500px;
+  padding: 0; }
+
 .textUpdate {
   border: none;
   border-radius: 0; }
@@ -73,12 +78,6 @@ div textarea {
 .textUpdate:focus {
   border: 1px solid #555;
   outline: 0; }
-
-.glyOk, .glyOk:hover, .glyOk:active, .glyOk:visited, .glyOk:link {
-  color: green; }
-
-.glyOk:hover, .glyOk:active, .glyOk:visited, .glyOk:link {
-  text-decoration: none; }
 
 .glyUnchecked, .glyUnchecked:hover, .glyUnchecked:active, .glyUnchecked:visited, .glyUnchecked:link {
   color: gray; }
@@ -102,6 +101,9 @@ div textarea {
 
 .td {
   padding-left: 20px; }
+
+.la {
+  margin-right: 10px; }
 
 .container-fluid {
   background: black; }
@@ -129,13 +131,13 @@ nav {
     background-color: #111; }
 
 .glyList, .glyList:hover, .glyList:active, .glyList:visited, .glyList:link {
-  color: yellow; }
+  color: #dedc03; }
 
 .glyList:hover, .glyList:active, .glyList:visited, .glyList:link {
   text-decoration: none; }
 
 .glyOkCircle, .glyOkCircle:hover, .glyOkCircle:active, .glyOkCircle:visited, .glyOkCircle:link {
-  color: yellow; }
+  color: #dedc03; }
 
 .glyOkCircle:hover, .glyOkCircle:active, .glyOkCircle:visited, .glyOkCircle:link {
   text-decoration: none; }
@@ -144,5 +146,22 @@ nav {
   font-size: 30px;
   color: white;
   font-variant: small-caps; }
+
+.glyRepeat, .glyRepeat:hover, .glyRepeat:active, .glyRepeat:visited, .glyRepeat:link {
+  margin-left: 100px;
+  color: orange; }
+
+.glyRepeat:hover, .glyRepeat:active, .glyRepeat:visited, .glyRepeat:link {
+  text-decoration: none; }
+
+.glyOk, .glyOk:hover, .glyOk:active, .glyOk:visited, .glyOk:link {
+  color: green; }
+
+.glyOk:hover, .glyOk:active, .glyOk:visited, .glyOk:link {
+  text-decoration: none; }
+
+.lalLast {
+  margin-right: 10px;
+  width: 230px; }
 
 /*# sourceMappingURL=index.css.map */

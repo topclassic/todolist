@@ -25,12 +25,11 @@ export class UpdateTasks extends React.Component{
         e.preventDefault()
         let title = this.props.title
         let date = this.props.date
-        title && date && this.props.addTasksDone({title,date})
+        let description = this.props.description
+        title && date && this.props.addTasksDone({title,date,description})
         this.props.remove(this.props.index)
     }
-
     handleRemove = () => {
-
         this.props.remove(this.props.index)
     }
     handleCancel = () =>{
@@ -119,12 +118,10 @@ export class UpdateTasks extends React.Component{
 
                         </td>
                         <td className="td">
-                            <label>
-                                Task&nbsp;ID&nbsp;:&nbsp;&nbsp;
-                                {this.props.index}
-                                &nbsp;&nbsp;&nbsp;
-                                Date&nbsp;:&nbsp;&nbsp;
-                            </label>
+                            <label className="la">Task&nbsp;ID&nbsp;:</label>
+                            <label className="la"> {this.props.index} </label>
+                            <label className="la"> Date&nbsp;: </label>
+
                             <input ref="date" type="text" className="textUpdate" value={this.state.taskUpdate.date} onClick={this.handleClick} onChange={this.handle}/>
                         </td>
                     </tr>
@@ -133,7 +130,7 @@ export class UpdateTasks extends React.Component{
 
                         </td>
                         <td className="td">
-                            <label>Tittle&nbsp;:&nbsp;&nbsp;</label>
+                            <label className="la">Tittle&nbsp;:</label>
                             <input ref="title" type="text" className="textUpdate" value={this.state.taskUpdate.title} onClick={this.handleClick} onChange={this.handle} size="52"/>
                         </td>
                         <td>

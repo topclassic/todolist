@@ -10,17 +10,23 @@ export class ListTaskDone extends React.Component{
                     <tbody>
                     <tr>
                         <td>
-                            {this.props.tasksDone.map((tasksDone,key) => <li className="li" key={key} >
-                                <CompleteTasks title={tasksDone.title} date={tasksDone.date}/>
+                            {this.props.tasksDone.map((tasksDone,key) => <li className="liTasksDone" key={key} >
+                                <CompleteTasks index={key} title={tasksDone.title} date={tasksDone.date}
+                                               description={tasksDone.description}
+                                               repeatTasks={this.repeatTasks} remove={this.removeTasksDone}/>
                                 <hr/>
                             </li>)}
                         </td>
-
                     </tr>
                     </tbody>
                 </table>
-
             </div>
         )
+    }
+    removeTasksDone = (value) => {
+        this.props.removeTasksDone(value)
+    }
+    repeatTasks = (value) => {
+        this.props.addTasks(value)
     }
 }
