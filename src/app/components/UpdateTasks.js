@@ -79,7 +79,7 @@ export class UpdateTasks extends React.Component{
         }
         let contentDesc = ""
         if(this.state.addDesc){
-            contentDesc = <div><textarea ref="description" onClick={this.handleClick} value={this.state.taskUpdate.description} onChange={this.handle} rows="4" cols="64" placeholder="description.."></textarea></div>
+            contentDesc = <div><textarea onClick={this.handleClick} value={this.state.taskUpdate.description} onChange={this.handleDesc} rows="4" cols="64" placeholder="description.."></textarea></div>
         }else{
             contentDesc = ""
         }
@@ -96,10 +96,12 @@ export class UpdateTasks extends React.Component{
 
                         </td>
                         <td className="td">
-                            Task&nbsp;ID&nbsp;:&nbsp;&nbsp;
-                            {this.props.index}
-                            &nbsp;&nbsp;&nbsp;
-                            Date&nbsp;:&nbsp;&nbsp;
+                            <label>
+                                Task&nbsp;ID&nbsp;:&nbsp;&nbsp;
+                                {this.props.index}
+                                &nbsp;&nbsp;&nbsp;
+                                Date&nbsp;:&nbsp;&nbsp;
+                            </label>
                             <input ref="date" type="text" className="textUpdate" value={this.state.taskUpdate.date} onClick={this.handleClick} onChange={this.handle}/>
                         </td>
                     </tr>
@@ -108,7 +110,7 @@ export class UpdateTasks extends React.Component{
 
                         </td>
                         <td className="td">
-                            Tittle&nbsp;:&nbsp;&nbsp;
+                            <label>Tittle&nbsp;:&nbsp;&nbsp;</label>
                             <input ref="title" type="text" className="textUpdate" value={this.state.taskUpdate.title} onClick={this.handleClick} onChange={this.handle} size="52"/>
                         </td>
                         <td>
@@ -150,12 +152,21 @@ export class UpdateTasks extends React.Component{
         })
         this.props.update(this.props.index,this.state.taskUpdate)
     }
-    handle = (e) => {
+    handleDesc = (e) =>{
         this.setState({
             taskUpdate:{
                 title: this.refs.title.value,
                 date: this.refs.date.value,
-                description: this.refs.description.value
+                description: e.target.value
+            }
+        })
+    }
+    handle = () => {
+        this.setState({
+            taskUpdate:{
+                title: this.refs.title.value,
+                date: this.refs.date.value,
+                description: this.props.description
             }
         })
     }

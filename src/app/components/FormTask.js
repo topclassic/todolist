@@ -7,7 +7,7 @@ export class FormTask extends React.Component{
         this.state = {
             add: false,
             addDesc: false,
-            description:"Some thing.."
+            description:""
         }
     }
     enterTask = () =>{
