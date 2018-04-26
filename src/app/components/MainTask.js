@@ -2,7 +2,7 @@ import React from "react"
 import {FormTask} from "./FormTask"
 import {ListTask} from "./ListTask"
 import {ListTaskDone} from "./ListTaskDone"
-import {tasksGet} from '../actions'
+import { tasksListGet } from '../actions'
 import { connect } from 'react-redux'
 
 class MainTask extends React.Component{
@@ -56,8 +56,8 @@ class MainTask extends React.Component{
         })
     }
     componentDidMount() {
-        const { tasksActionsGet } = this.props
-        tasksActionsGet()
+        const { tasksListActionsGet } = this.props
+        tasksListActionsGet()
 
         let tasksList = localStorage.getItem('tasks')
         let tasksDoneList = localStorage.getItem('tasksDone')
@@ -135,7 +135,7 @@ const mapStateToProps = state => ({
     tasksList: state.tasksReducer.data
   })
   const mapDispatchToProps = dispatch => ({
-    tasksActionsGet: () => dispatch(tasksGet())
+    tasksListActionsGet: () => dispatch(tasksListGet())
   })
   
   
