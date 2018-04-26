@@ -2,7 +2,7 @@
 import axios from 'axios'
 import {TASKS_GET_SUCCESS} from './types'
 
-const tasksGet = () => (dispatch) => {  
+const tasksListGet = () => (dispatch) => {  
     return axios({
       method: 'get',
       url: `http://localhost:9000/todolist`, // Please Allow-Control-Allow-Origin for test
@@ -17,5 +17,5 @@ const tasksGet = () => (dispatch) => {
 }
 
 export{
-    tasksGet
+    tasksListGet
 }
