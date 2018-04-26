@@ -4,7 +4,6 @@ import {UpdateTasks} from "./UpdateTasks";
 export class ListTask extends React.Component{
 
     render() {
-
         return (
             <div>
                 <table>
