@@ -58,6 +58,7 @@ class MainTask extends React.Component{
     componentDidMount() {
         const { tasksActionsGet } = this.props
         tasksActionsGet()
+
         let tasksList = localStorage.getItem('tasks')
         let tasksDoneList = localStorage.getItem('tasksDone')
         if (tasksList) {
@@ -68,6 +69,16 @@ class MainTask extends React.Component{
         if(tasksDoneList){
             this.setState({
                 tasksDone: JSON.parse(localStorage.getItem('tasksDone'))
+            })
+        }
+    }
+    componentWillReceiveProps(nextProps) {
+        const { tasksList: preTasksList } = this.props
+        const { tasksList: nxtTasksList } = nextProps
+
+        if (nxtTasksList && (preTasksList !== nxtTasksList)){
+            this.setState({
+                tasks: nxtTasksList
             })
         }
     }
@@ -121,8 +132,7 @@ class MainTask extends React.Component{
 
 
 const mapStateToProps = state => ({
-    // videoSelfieStore: state[project.name].selfieVideo,
-    // videoFileStore: state[project.name].selfieVideo.video
+    tasksList: state.tasksReducer.data
   })
   const mapDispatchToProps = dispatch => ({
     tasksActionsGet: () => dispatch(tasksGet())
