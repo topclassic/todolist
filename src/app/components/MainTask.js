@@ -1,10 +1,11 @@
-import React from "react";
-import {FormTask} from "./FormTask";
-import {ListTask} from "./ListTask";
-import {ListTaskDone} from "./ListTaskDone";
+import React from "react"
+import {FormTask} from "./FormTask"
+import {ListTask} from "./ListTask"
+import {ListTaskDone} from "./ListTaskDone"
+import {tasksGet} from '../actions'
+import { connect } from 'react-redux'
 
-export class MainTask extends React.Component{
-
+class MainTask extends React.Component{
     constructor(props) {
         super(props)
         this.state ={
@@ -55,6 +56,8 @@ export class MainTask extends React.Component{
         })
     }
     componentDidMount() {
+        const { tasksActionsGet } = this.props
+        tasksActionsGet()
         let tasksList = localStorage.getItem('tasks')
         let tasksDoneList = localStorage.getItem('tasksDone')
         if (tasksList) {
@@ -115,3 +118,15 @@ export class MainTask extends React.Component{
         )
     }
 }
+
+
+const mapStateToProps = state => ({
+    // videoSelfieStore: state[project.name].selfieVideo,
+    // videoFileStore: state[project.name].selfieVideo.video
+  })
+  const mapDispatchToProps = dispatch => ({
+    tasksActionsGet: () => dispatch(tasksGet())
+  })
+  
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(MainTask)
