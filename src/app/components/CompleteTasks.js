@@ -49,7 +49,7 @@ export class CompleteTasks extends React.Component{
         let title = this.props.title
         let date = this.props.date
         let description = this.props.description
-        title && date && this.props.repeatTasks({title,date,description})
+        title && date && this.props.repeatTasks({title,date,description, tasksComplete: false})
         this.props.remove(this.props.index)
     }
 }

@@ -27,7 +27,6 @@ export class UpdateTasks extends React.Component{
         let date = this.props.date
         let description = this.props.description
         title && date && this.props.addTasksDone({title,date,description})
-        this.props.remove(this.props.index)
     }
     handleRemove = () => {
         this.props.remove(this.props.index)

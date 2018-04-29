@@ -2,7 +2,7 @@ import React from "react"
 import {FormTask} from "./FormTask"
 import {ListTask} from "./ListTask"
 import {ListTaskDone} from "./ListTaskDone"
-import { tasksListGet, createTasks } from '../actions'
+import { tasksListGet, createTasks, removeTasks } from '../actions'
 import { connect } from 'react-redux'
 
 class MainTask extends React.Component{
@@ -48,7 +48,9 @@ class MainTask extends React.Component{
         })
     }
     removeTasks = (value) => {
-        let filtered = this.state.tasks
+        const { removeTasksActions } = this.props
+        const filtered = this.state.tasks
+        removeTasksActions(filtered[value]._id)
         filtered.splice(value, 1);
         this.setState({
             tasks: filtered
@@ -72,7 +74,7 @@ class MainTask extends React.Component{
         }
     }
     componentWillReceiveProps(nextProps) {
-        const { tasksList: preTasksList } = this.props
+        const { tasksList: preTasksList, tasksListGetActions } = this.props
         const { tasksList: nxtTasksList } = nextProps
 
         if (nxtTasksList && (preTasksList !== nxtTasksList)){
@@ -135,7 +137,8 @@ const mapStateToProps = state => ({
   })
   const mapDispatchToProps = dispatch => ({
     tasksListGetActions: () => dispatch(tasksListGet()),
-    createTasksActions: (tasks) => dispatch(createTasks(tasks))
+    createTasksActions: (tasks) => dispatch(createTasks(tasks)),
+    removeTasksActions: (id) => dispatch(removeTasks(id))
   })
   
   

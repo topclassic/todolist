@@ -2,7 +2,8 @@
 import axios from 'axios'
 import {
     TASKS_GET_SUCCESS,
-    TASKS_POST_SUCCESS
+    TASKS_POST_SUCCESS,
+    TASKS_DELETE_SUCCESS
 } from './types'
 
 const tasksListGet = () => (dispatch) => {  
@@ -27,7 +28,6 @@ const createTasks = (tasks) => (dispatch) =>{
     } = tasks
     return axios({
         method: 'post',
-        withCredentials: true ,
         url: `http://localhost:9000/createtasks`,
         data: {
             title,
@@ -44,7 +44,22 @@ const createTasks = (tasks) => (dispatch) =>{
     })
 }
 
+const removeTasks = (id) => (dispatch) => {
+    const { $oid } = id
+    return axios({
+        method: 'delete',
+        url: `http://localhost:9000/removetasks/${$oid}`,
+    }) 
+        .then(response => {
+            dispatch({type: TASKS_DELETE_SUCCESS, create: response.data})
+        })
+        .catch((error) => {
+            alert(error)
+    })    
+}
+
 export{
     tasksListGet,
-    createTasks
+    createTasks,
+    removeTasks
 }
