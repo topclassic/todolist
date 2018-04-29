@@ -27,10 +27,8 @@ class MainTask extends React.Component{
         })
     }
     addTasks = (tasks) => {
-        this.props.createTasksActions(tasks)
-        this.setState({
-            tasks: this.state.tasks.concat(tasks)
-        })
+        const { createTasksActions } = this.props
+        createTasksActions(tasks)
     }
     handleSelectList = () => {
         this.setState({
@@ -133,7 +131,7 @@ class MainTask extends React.Component{
 
 
 const mapStateToProps = state => ({
-    tasksList: state.tasksReducer.data
+    tasksList: state.tasksReducer.data,
   })
   const mapDispatchToProps = dispatch => ({
     tasksListGetActions: () => dispatch(tasksListGet()),

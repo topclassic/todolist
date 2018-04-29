@@ -1,6 +1,9 @@
 
 import axios from 'axios'
-import {TASKS_GET_SUCCESS} from './types'
+import {
+    TASKS_GET_SUCCESS,
+    TASKS_POST_SUCCESS
+} from './types'
 
 const tasksListGet = () => (dispatch) => {  
     return axios({
@@ -8,11 +11,10 @@ const tasksListGet = () => (dispatch) => {
       url: `http://localhost:9000/taskslist`
     })
         .then(response => {
-            console.log('response',response)
             dispatch({type: TASKS_GET_SUCCESS, data: response.data});
         })
         .catch((error) => {
-            console.log('error', error);
+            alert(error)
         })
 }
 
@@ -35,11 +37,10 @@ const createTasks = (tasks) => (dispatch) =>{
         }
     })
         .then(response => {
-            console.log('response',response)
-            // dispatch({type: TASKS_GET_SUCCESS, data: response.data});
+            dispatch({type: TASKS_POST_SUCCESS, create: response.data})
         })
         .catch((error) => {
-            console.log('error', error);
+            alert(error.response.data)
     })
 }
 
