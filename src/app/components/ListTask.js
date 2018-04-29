@@ -10,13 +10,16 @@ export class ListTask extends React.Component{
                     <tbody>
                     <tr>
                         <td>
-                            {this.props.tasks.map((tasks,key) => <li className="li" key={key} >
-                                <UpdateTasks index={key} update={this.updateTasks} remove={this.removeTasks} addTasksDone={this.addTasksDone}
-                                             title={tasks.title} date={tasks.date} description={tasks.description}/>
+                            {
+                                this.props.tasks.map((tasks,key) => <li className="li" key={key} >
+                                    {!tasks.tasksComplete && <UpdateTasks index={key} update={this.updateTasks} remove={this.removeTasks}
+                                        addTasksDone={this.addTasksDone}
+                                        title={tasks.title} date={tasks.date} description={tasks.description}
+                                    />}
                                 <hr/>
-                                </li>)}
+                                </li>)
+                            }
                         </td>
-
                     </tr>
                     </tbody>
                 </table>

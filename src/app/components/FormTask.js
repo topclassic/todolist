@@ -13,7 +13,6 @@ export class FormTask extends React.Component{
     enterTask = () =>{
         this.setState({
             add: true
-
         })
     }
     addDesc = () =>{
@@ -31,7 +30,7 @@ export class FormTask extends React.Component{
         let title = this.refs.title.value
         let description = this.state.description
         let date = this.refs.date.value
-        title && date && this.props.addTasks({title,date,description})
+        title && date && this.props.addTasks({title,date,description,tasksComplete:false})
         !title || !date ? alert("Please enter title and date"):""
 
         this.refs.title.value = ""
