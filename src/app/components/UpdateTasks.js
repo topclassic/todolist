@@ -22,13 +22,16 @@ export class UpdateTasks extends React.Component{
             addDesc: !this.state.addDesc
         })
     }
-    addTaskDone = (e) =>{
+    addTasksDone = (e) =>{
         e.preventDefault()
+        let _id = this.props._id
         let title = this.props.title
         let date = this.props.date
         let description = this.props.description
-        title && date && this.props.addTasksDone({title,date,description})
-        this.props.remove(this.props.index)
+        title && date && this.props.update(
+            this.props.index,
+            {_id, title,date,description, tasksComplete: true}
+        )
     }
     handleRemove = () => {
         this.props.remove(this.props.index)
@@ -117,7 +120,7 @@ export class UpdateTasks extends React.Component{
                     <tbody>
                     <tr>
                         <td>
-                            <a onClick={this.addTaskDone} width="50" href="#" className="glyUnchecked" >
+                            <a onClick={this.addTasksDone} width="50" href="#" className="glyUnchecked" >
                                 <span className="glyphicon glyphicon-unchecked"></span></a>
 
                         </td>

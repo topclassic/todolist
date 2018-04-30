@@ -16,7 +16,7 @@ export class ListTask extends React.Component{
                                         addTasksDone={this.addTasksDone}
                                         _id={tasks._id} title={tasks.title} date={tasks.date} description={tasks.description}
                                     />}
-                                <hr/>
+                                {!tasks.tasksComplete && <hr/>}
                                 </li>)
                             }
                         </td>

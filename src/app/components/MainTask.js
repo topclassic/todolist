@@ -99,7 +99,7 @@ class MainTask extends React.Component{
                         <p className="p"> list complete </p>
                     </div>
                     <br/>
-                    <ListTaskDone addTasks={this.addTasks} tasksDone={this.state.tasksDone} removeTasksDone={this.removeTasksDone}/>
+                    <ListTaskDone addTasks={this.addTasks} tasksDone={this.state.tasks} removeTasksDone={this.removeTasks}/>
                 </div>
         }else{
             content =

@@ -11,10 +11,11 @@ export class ListTaskDone extends React.Component{
                     <tr>
                         <td>
                             {this.props.tasksDone.map((tasksDone,key) => <li className="liTasksDone" key={key} >
-                                <CompleteTasks index={key} title={tasksDone.title} date={tasksDone.date}
-                                               description={tasksDone.description}
-                                               repeatTasks={this.repeatTasks} remove={this.removeTasksDone}/>
-                                <hr/>
+                                {tasksDone.tasksComplete && <CompleteTasks index={key} title={tasksDone.title} date={tasksDone.date}
+                                    description={tasksDone.description}
+                                    repeatTasks={this.repeatTasks} remove={this.removeTasksDone}
+                                />}
+                            {tasksDone.tasksComplete && <hr/>}
                             </li>)}
                         </td>
                     </tr>
