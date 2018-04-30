@@ -13,7 +13,6 @@ export class ListTask extends React.Component{
                             {
                                 this.props.tasks.map((tasks,key) => <li className="li" key={key} >
                                     {!tasks.tasksComplete && <UpdateTasks index={key} update={this.updateTasks} remove={this.removeTasks}
-                                        addTasksDone={this.addTasksDone}
                                         _id={tasks._id} title={tasks.title} date={tasks.date} description={tasks.description}
                                     />}
                                 {!tasks.tasksComplete && <hr/>}
@@ -32,8 +31,5 @@ export class ListTask extends React.Component{
     }
     updateTasks = (value,update) => {
         this.props.updateTasks(value,update)
-    }
-    addTasksDone = (value) => {
-        this.props.addTasksDone(value)
     }
 }

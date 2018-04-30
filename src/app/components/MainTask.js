@@ -10,7 +10,6 @@ class MainTask extends React.Component{
         super(props)
         this.state ={
             tasks:[],
-            tasksDone:[],
             select: false
         }
     }
@@ -21,11 +20,6 @@ class MainTask extends React.Component{
         updateTasksActions(filtered[value])
         this.setState({
             tasks: filtered
-        })
-    }
-    addTasksDone = (tasksDone) => {
-        this.setState({
-            tasksDone: this.state.tasksDone.concat(tasksDone)
         })
     }
     addTasks = (tasks) => {
@@ -40,13 +34,6 @@ class MainTask extends React.Component{
     handleSelectTasksDone = () => {
         this.setState({
             select:true
-        })
-    }
-    removeTasksDone = (value) => {
-        let filtered = this.state.tasksDone
-        filtered.splice(value, 1);
-        this.setState({
-            tasksDone: filtered
         })
     }
     removeTasks = (value) => {
@@ -69,11 +56,6 @@ class MainTask extends React.Component{
                 tasks: JSON.parse(localStorage.getItem('tasks'))
             })
         }
-        if(tasksDoneList){
-            this.setState({
-                tasksDone: JSON.parse(localStorage.getItem('tasksDone'))
-            })
-        }
     }
     componentWillReceiveProps(nextProps) {
         const { tasksList: preTasksList, tasksListGetActions } = this.props
@@ -87,7 +69,6 @@ class MainTask extends React.Component{
     }
     componentDidUpdate() {
         localStorage.setItem('tasks', JSON.stringify(this.state.tasks))
-        localStorage.setItem('tasksDone', JSON.stringify(this.state.tasksDone))
     }
 
     render() {
@@ -108,8 +89,7 @@ class MainTask extends React.Component{
                         <p className="p"> list </p>
                     </div>
                     <br/>
-                    <ListTask addTasksDone={this.addTasksDone} tasks={this.state.tasks}
-                              removeTasks={this.removeTasks} updateTasks={this.updateTasks}/>
+                    <ListTask tasks={this.state.tasks} removeTasks={this.removeTasks} updateTasks={this.updateTasks}/>
                     <FormTask addTasks={this.addTasks} />
                 </div>
         }

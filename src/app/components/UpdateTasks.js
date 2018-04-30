@@ -121,7 +121,7 @@ export class UpdateTasks extends React.Component{
                     <tr>
                         <td>
                             <a onClick={this.addTasksDone} width="50" href="#" className="glyUnchecked" >
-                                <span className="glyphicon glyphicon-unchecked"></span></a>
+                            <span className="la">DONE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></a>
 
                         </td>
                         <td className="td">
