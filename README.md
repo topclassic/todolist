@@ -1,4 +1,4 @@
-# ToDoList with Localstorage
+# ToDoList with Localstorage Scala REST API connect Mongodb
 ### README ###
 
 Setup & Run
