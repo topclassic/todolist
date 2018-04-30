@@ -3,7 +3,8 @@ import axios from 'axios'
 import {
     TASKS_GET_SUCCESS,
     TASKS_POST_SUCCESS,
-    TASKS_DELETE_SUCCESS
+    TASKS_DELETE_SUCCESS,
+    TASKS_UPDATE_SUCCESS
 } from './types'
 
 const tasksListGet = () => (dispatch) => {  
@@ -41,7 +42,7 @@ const createTasks = (tasks) => (dispatch) =>{
         })
         .catch((error) => {
             alert(error.response.data)
-    })
+        })
 }
 
 const removeTasks = (id) => (dispatch) => {
@@ -55,11 +56,39 @@ const removeTasks = (id) => (dispatch) => {
         })
         .catch((error) => {
             alert(error)
-    })    
+        })    
+}
+
+const updateTasks = (tasks) => (dispatch) => {
+    const {
+        _id,
+        title,
+        date,
+        description,
+        tasksComplete
+    } = tasks
+    const { $oid } = _id
+    return axios({
+        method: 'put',
+        url: ` http://localhost:9000/updatetasks/${$oid}`,
+        data: {
+            title,
+            date,
+            description,
+            tasksComplete
+        }
+    })
+        .then(response =>{
+            dispatch({type: TASKS_UPDATE_SUCCESS, update: response.data})
+        })
+        .catch((error) =>{
+            alert(error)
+        })
 }
 
 export{
     tasksListGet,
     createTasks,
-    removeTasks
+    removeTasks,
+    updateTasks
 }

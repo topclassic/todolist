@@ -2,7 +2,7 @@ import React from "react"
 import {FormTask} from "./FormTask"
 import {ListTask} from "./ListTask"
 import {ListTaskDone} from "./ListTaskDone"
-import { tasksListGet, createTasks, removeTasks } from '../actions'
+import { tasksListGet, createTasks, removeTasks, updateTasks } from '../actions'
 import { connect } from 'react-redux'
 
 class MainTask extends React.Component{
@@ -15,8 +15,10 @@ class MainTask extends React.Component{
         }
     }
     updateTasks = (value,update) =>{
-        let filtered = this.state.tasks
-        filtered.splice(value, 1,update);
+        const { updateTasksActions } = this.props
+        const filtered = this.state.tasks
+        filtered.splice(value, 1,update)
+        updateTasksActions(filtered[value])
         this.setState({
             tasks: filtered
         })
@@ -112,7 +114,6 @@ class MainTask extends React.Component{
                 </div>
         }
         return (
-
             <div>
                 <nav>
                     <ul>
@@ -138,7 +139,8 @@ const mapStateToProps = state => ({
   const mapDispatchToProps = dispatch => ({
     tasksListGetActions: () => dispatch(tasksListGet()),
     createTasksActions: (tasks) => dispatch(createTasks(tasks)),
-    removeTasksActions: (id) => dispatch(removeTasks(id))
+    removeTasksActions: (id) => dispatch(removeTasks(id)),
+    updateTasksActions: (tasks) => dispatch(updateTasks(tasks))
   })
   
   

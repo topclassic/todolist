@@ -14,7 +14,7 @@ export class ListTask extends React.Component{
                                 this.props.tasks.map((tasks,key) => <li className="li" key={key} >
                                     {!tasks.tasksComplete && <UpdateTasks index={key} update={this.updateTasks} remove={this.removeTasks}
                                         addTasksDone={this.addTasksDone}
-                                        title={tasks.title} date={tasks.date} description={tasks.description}
+                                        _id={tasks._id} title={tasks.title} date={tasks.date} description={tasks.description}
                                     />}
                                 <hr/>
                                 </li>)

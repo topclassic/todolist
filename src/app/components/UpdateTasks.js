@@ -9,6 +9,7 @@ export class UpdateTasks extends React.Component{
             addDesc: false,
 
             taskUpdate:{
+                _id: props._id,
                 title: props.title,
                 date: props.date,
                 description: props.description
@@ -27,6 +28,7 @@ export class UpdateTasks extends React.Component{
         let date = this.props.date
         let description = this.props.description
         title && date && this.props.addTasksDone({title,date,description})
+        this.props.remove(this.props.index)
     }
     handleRemove = () => {
         this.props.remove(this.props.index)
@@ -45,6 +47,7 @@ export class UpdateTasks extends React.Component{
     handleDesc = (e) =>{
         this.setState({
             taskUpdate:{
+                _id: this.props._id,
                 title: this.refs.title.value,
                 date: this.refs.date.value,
                 description: e.target.value
@@ -54,6 +57,7 @@ export class UpdateTasks extends React.Component{
     handle = () => {
         this.setState({
             taskUpdate:{
+                _id: this.props._id,
                 title: this.refs.title.value,
                 date: this.refs.date.value,
                 description: this.props.description
@@ -63,6 +67,7 @@ export class UpdateTasks extends React.Component{
     componentWillReceiveProps(nextProps){
         this.setState({
             taskUpdate:{
+                _id: this.props._id,
                 title: nextProps.title,
                 date: nextProps.date,
                 description: nextProps.description
