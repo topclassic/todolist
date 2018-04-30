@@ -1,34 +1,30 @@
-import React from "react";
-import {FormTask} from "./FormTask";
-import {ListTask} from "./ListTask";
-import {ListTaskDone} from "./ListTaskDone";
+import React from "react"
+import {FormTask} from "./FormTask"
+import {ListTask} from "./ListTask"
+import {ListTaskDone} from "./ListTaskDone"
+import { tasksListGet, createTasks, removeTasks, updateTasks } from '../actions'
+import { connect } from 'react-redux'
 
-export class MainTask extends React.Component{
-
+class MainTask extends React.Component{
     constructor(props) {
         super(props)
         this.state ={
             tasks:[],
-            tasksDone:[],
             select: false
         }
     }
     updateTasks = (value,update) =>{
-        let filtered = this.state.tasks
-        filtered.splice(value, 1,update);
+        const { updateTasksActions } = this.props
+        const filtered = this.state.tasks
+        filtered.splice(value, 1,update)
+        updateTasksActions(filtered[value])
         this.setState({
             tasks: filtered
         })
     }
-    addTasksDone = (tasksDone) => {
-        this.setState({
-            tasksDone: this.state.tasksDone.concat(tasksDone)
-        })
-    }
     addTasks = (tasks) => {
-        this.setState({
-            tasks: this.state.tasks.concat(tasks)
-        })
+        const { createTasksActions } = this.props
+        createTasksActions(tasks)
     }
     handleSelectList = () => {
         this.setState({
@@ -40,21 +36,19 @@ export class MainTask extends React.Component{
             select:true
         })
     }
-    removeTasksDone = (value) => {
-        let filtered = this.state.tasksDone
-        filtered.splice(value, 1);
-        this.setState({
-            tasksDone: filtered
-        })
-    }
     removeTasks = (value) => {
-        let filtered = this.state.tasks
+        const { removeTasksActions } = this.props
+        const filtered = this.state.tasks
+        removeTasksActions(filtered[value]._id)
         filtered.splice(value, 1);
         this.setState({
             tasks: filtered
         })
     }
     componentDidMount() {
+        const { tasksListGetActions } = this.props
+        tasksListGetActions()
+
         let tasksList = localStorage.getItem('tasks')
         let tasksDoneList = localStorage.getItem('tasksDone')
         if (tasksList) {
@@ -62,15 +56,19 @@ export class MainTask extends React.Component{
                 tasks: JSON.parse(localStorage.getItem('tasks'))
             })
         }
-        if(tasksDoneList){
+    }
+    componentWillReceiveProps(nextProps) {
+        const { tasksList: preTasksList, tasksListGetActions } = this.props
+        const { tasksList: nxtTasksList } = nextProps
+
+        if (nxtTasksList && (preTasksList !== nxtTasksList)){
             this.setState({
-                tasksDone: JSON.parse(localStorage.getItem('tasksDone'))
+                tasks: nxtTasksList
             })
         }
     }
     componentDidUpdate() {
         localStorage.setItem('tasks', JSON.stringify(this.state.tasks))
-        localStorage.setItem('tasksDone', JSON.stringify(this.state.tasksDone))
     }
 
     render() {
@@ -82,7 +80,7 @@ export class MainTask extends React.Component{
                         <p className="p"> list complete </p>
                     </div>
                     <br/>
-                    <ListTaskDone addTasks={this.addTasks} tasksDone={this.state.tasksDone} removeTasksDone={this.removeTasksDone}/>
+                    <ListTaskDone addTasks={this.addTasks} tasksDone={this.state.tasks} removeTasksDone={this.removeTasks}/>
                 </div>
         }else{
             content =
@@ -91,13 +89,11 @@ export class MainTask extends React.Component{
                         <p className="p"> list </p>
                     </div>
                     <br/>
-                    <ListTask addTasksDone={this.addTasksDone} tasks={this.state.tasks}
-                              removeTasks={this.removeTasks} updateTasks={this.updateTasks}/>
+                    <ListTask tasks={this.state.tasks} removeTasks={this.removeTasks} updateTasks={this.updateTasks}/>
                     <FormTask addTasks={this.addTasks} />
                 </div>
         }
         return (
-
             <div>
                 <nav>
                     <ul>
@@ -115,3 +111,17 @@ export class MainTask extends React.Component{
         )
     }
 }
+
+
+const mapStateToProps = state => ({
+    tasksList: state.tasksReducer.data,
+  })
+  const mapDispatchToProps = dispatch => ({
+    tasksListGetActions: () => dispatch(tasksListGet()),
+    createTasksActions: (tasks) => dispatch(createTasks(tasks)),
+    removeTasksActions: (id) => dispatch(removeTasks(id)),
+    updateTasksActions: (tasks) => dispatch(updateTasks(tasks))
+  })
+  
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(MainTask)

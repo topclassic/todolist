@@ -9,6 +9,7 @@ export class UpdateTasks extends React.Component{
             addDesc: false,
 
             taskUpdate:{
+                _id: props._id,
                 title: props.title,
                 date: props.date,
                 description: props.description
@@ -21,13 +22,16 @@ export class UpdateTasks extends React.Component{
             addDesc: !this.state.addDesc
         })
     }
-    addTaskDone = (e) =>{
+    addTasksDone = (e) =>{
         e.preventDefault()
+        let _id = this.props._id
         let title = this.props.title
         let date = this.props.date
         let description = this.props.description
-        title && date && this.props.addTasksDone({title,date,description})
-        this.props.remove(this.props.index)
+        title && date && this.props.update(
+            this.props.index,
+            {_id, title,date,description, tasksComplete: true}
+        )
     }
     handleRemove = () => {
         this.props.remove(this.props.index)
@@ -46,6 +50,7 @@ export class UpdateTasks extends React.Component{
     handleDesc = (e) =>{
         this.setState({
             taskUpdate:{
+                _id: this.props._id,
                 title: this.refs.title.value,
                 date: this.refs.date.value,
                 description: e.target.value
@@ -55,6 +60,7 @@ export class UpdateTasks extends React.Component{
     handle = () => {
         this.setState({
             taskUpdate:{
+                _id: this.props._id,
                 title: this.refs.title.value,
                 date: this.refs.date.value,
                 description: this.props.description
@@ -64,6 +70,7 @@ export class UpdateTasks extends React.Component{
     componentWillReceiveProps(nextProps){
         this.setState({
             taskUpdate:{
+                _id: this.props._id,
                 title: nextProps.title,
                 date: nextProps.date,
                 description: nextProps.description
@@ -113,8 +120,8 @@ export class UpdateTasks extends React.Component{
                     <tbody>
                     <tr>
                         <td>
-                            <a onClick={this.addTaskDone} width="50" href="#" className="glyUnchecked" >
-                                <span className="glyphicon glyphicon-unchecked"></span></a>
+                            <a onClick={this.addTasksDone} width="50" href="#" className="glyUnchecked" >
+                            <span className="la">DONE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></a>
 
                         </td>
                         <td className="td">
