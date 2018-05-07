@@ -10,7 +10,7 @@ import {
 const tasksListGet = () => (dispatch) => {  
     return axios({
       method: 'get',
-      url: `http://localhost:9000/taskslist`
+      url: `http://localhost:9000/api/v1/tasks`
     })
         .then(response => {
             dispatch({type: TASKS_GET_SUCCESS, data: response.data});
@@ -29,7 +29,7 @@ const createTasks = (tasks) => (dispatch) =>{
     } = tasks
     return axios({
         method: 'post',
-        url: `http://localhost:9000/createtasks`,
+        url: `http://localhost:9000/api/v1/task`,
         data: {
             title,
             date,
@@ -49,7 +49,7 @@ const removeTasks = (id) => (dispatch) => {
     const { $oid } = id
     return axios({
         method: 'delete',
-        url: `http://localhost:9000/removetasks/${$oid}`,
+        url: `http://localhost:9000/api/v1/task/${$oid}`,
     }) 
         .then(response => {
             dispatch({type: TASKS_DELETE_SUCCESS, create: response.data})
@@ -70,7 +70,7 @@ const updateTasks = (tasks) => (dispatch) => {
     const { $oid } = _id
     return axios({
         method: 'put',
-        url: ` http://localhost:9000/updatetasks/${$oid}`,
+        url: ` http://localhost:9000/api/v1/task/${$oid}`,
         data: {
             title,
             date,
